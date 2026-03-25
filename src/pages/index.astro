@@ -1,0 +1,320 @@
+---
+import Layout from '../layouts/Layout.astro';
+---
+
+<Layout>
+  <!-- Nav -->
+  <nav class="fixed top-0 w-full z-50 bg-gray-950/80 backdrop-blur-sm border-b border-gray-800">
+    <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
+      <a href="/" class="text-xl font-bold text-cyan-400 font-mono">pecto</a>
+      <div class="flex items-center gap-6">
+        <a href="#features" class="text-sm text-gray-400 hover:text-white transition">Features</a>
+        <a href="#languages" class="text-sm text-gray-400 hover:text-white transition">Languages</a>
+        <a href="#install" class="text-sm text-gray-400 hover:text-white transition">Install</a>
+        <a href="https://github.com/pecto-dev/pecto" target="_blank" class="text-sm text-gray-400 hover:text-white transition">GitHub</a>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Hero -->
+  <section class="pt-32 pb-20 px-6">
+    <div class="max-w-4xl mx-auto text-center">
+      <h1 class="text-5xl md:text-6xl font-bold tracking-tight mb-6">
+        Your code has behaviors.<br/>
+        <span class="text-cyan-400">pecto makes them visible.</span>
+      </h1>
+      <p class="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
+        Extract behavior specs from Java and C# codebases in seconds. Static analysis powered by tree-sitter. No LLMs. No cloud.
+      </p>
+      <div class="flex gap-4 justify-center mb-16">
+        <a href="#install" class="px-6 py-3 bg-cyan-500 hover:bg-cyan-400 text-gray-950 font-semibold rounded-lg transition">
+          Get Started
+        </a>
+        <a href="https://github.com/pecto-dev/pecto" target="_blank" class="px-6 py-3 border border-gray-700 hover:border-gray-500 text-gray-300 rounded-lg transition">
+          View on GitHub
+        </a>
+      </div>
+
+      <!-- Terminal Demo -->
+      <div class="max-w-2xl mx-auto bg-gray-900 rounded-xl border border-gray-800 overflow-hidden shadow-2xl">
+        <div class="flex items-center gap-2 px-4 py-3 border-b border-gray-800">
+          <div class="w-3 h-3 rounded-full bg-red-500/60"></div>
+          <div class="w-3 h-3 rounded-full bg-yellow-500/60"></div>
+          <div class="w-3 h-3 rounded-full bg-green-500/60"></div>
+          <span class="text-xs text-gray-500 ml-2 font-mono">terminal</span>
+        </div>
+        <div class="p-6 font-mono text-sm text-left leading-relaxed">
+          <p><span class="text-gray-500">$</span> <span class="text-white">pecto init ./spring-petclinic-rest</span></p>
+          <p class="mt-2"><span class="text-cyan-400 font-bold">pecto</span> Analyzing /home/dev/spring-petclinic-rest...</p>
+          <p><span class="text-green-400 font-bold">&#10003;</span> Analyzed <span class="text-white font-bold">86</span> files &rarr; <span class="text-white font-bold">18</span> capabilities</p>
+          <p class="mt-1 text-gray-400">&nbsp;&nbsp;8 entities</p>
+          <p class="text-gray-400">&nbsp;&nbsp;7 repositories (45 operations)</p>
+          <p class="text-gray-400">&nbsp;&nbsp;2 services (30 operations)</p>
+          <p class="text-gray-400">&nbsp;&nbsp;1 controller (1 endpoint)</p>
+          <p class="mt-3 text-gray-500">---</p>
+          <p class="mt-1 text-yellow-300">name:</span> spring-petclinic-rest</p>
+          <p class="text-gray-400">capabilities:</p>
+          <p class="text-gray-400">&nbsp;&nbsp;- <span class="text-cyan-300">name:</span> owner-entity</p>
+          <p class="text-gray-400">&nbsp;&nbsp;&nbsp;&nbsp;entities:</p>
+          <p class="text-gray-400">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <span class="text-cyan-300">name:</span> Owner</p>
+          <p class="text-gray-400">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-cyan-300">table:</span> owners</p>
+          <p class="text-gray-400">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-cyan-300">fields:</span></p>
+          <p class="text-gray-400">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- <span class="text-cyan-300">name:</span> firstName</p>
+          <p class="text-gray-400">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<span class="text-cyan-300">constraints:</span> <span class="text-green-300">["@NotBlank"]</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Why Section -->
+  <section class="py-20 px-6 border-t border-gray-800">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-4">The problem</h2>
+      <p class="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
+        Code grows faster than understanding. AI generates code nobody fully grasps. Documentation is always outdated. pecto fixes this.
+      </p>
+      <div class="grid md:grid-cols-3 gap-8">
+        <div class="bg-gray-900 rounded-xl p-6 border border-gray-800">
+          <div class="text-4xl mb-4">76%</div>
+          <p class="text-gray-400">of developers using AI tools generate code they don't fully understand</p>
+        </div>
+        <div class="bg-gray-900 rounded-xl p-6 border border-gray-800">
+          <div class="text-4xl mb-4">$1.14T</div>
+          <p class="text-gray-400">spent annually on legacy code maintenance worldwide</p>
+        </div>
+        <div class="bg-gray-900 rounded-xl p-6 border border-gray-800">
+          <div class="text-4xl mb-4">&lt;2s</div>
+          <p class="text-gray-400">to analyze 250+ files and extract every behavior, entity, and endpoint</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section id="features" class="py-20 px-6 border-t border-gray-800">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-4">What pecto extracts</h2>
+      <p class="text-gray-400 text-center mb-12">From annotations, patterns, and code structure — no guessing.</p>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 hover:border-cyan-800 transition">
+          <div class="text-cyan-400 text-2xl mb-3">&#8644;</div>
+          <h3 class="font-semibold text-lg mb-2">REST Endpoints</h3>
+          <p class="text-gray-400 text-sm">HTTP methods, paths, path variables, query params, request bodies, validation rules, error responses.</p>
+        </div>
+        <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 hover:border-cyan-800 transition">
+          <div class="text-cyan-400 text-2xl mb-3">&#9638;</div>
+          <h3 class="font-semibold text-lg mb-2">Database Entities</h3>
+          <p class="text-gray-400 text-sm">Tables, fields, types, constraints, relationships. JPA/Hibernate and Entity Framework Core.</p>
+        </div>
+        <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 hover:border-cyan-800 transition">
+          <div class="text-cyan-400 text-2xl mb-3">&#9881;</div>
+          <h3 class="font-semibold text-lg mb-2">Service Layer</h3>
+          <p class="text-gray-400 text-sm">Operations, transactions, side effects — DB writes, event publishing, service calls.</p>
+        </div>
+        <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 hover:border-cyan-800 transition">
+          <div class="text-cyan-400 text-2xl mb-3">&#128274;</div>
+          <h3 class="font-semibold text-lg mb-2">Security</h3>
+          <p class="text-gray-400 text-sm">Authentication requirements, role-based access, CORS configuration, rate limiting.</p>
+        </div>
+        <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 hover:border-cyan-800 transition">
+          <div class="text-cyan-400 text-2xl mb-3">&#9200;</div>
+          <h3 class="font-semibold text-lg mb-2">Scheduled Tasks</h3>
+          <p class="text-gray-400 text-sm">Cron jobs, background services, event listeners, timer-based polling.</p>
+        </div>
+        <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 hover:border-cyan-800 transition">
+          <div class="text-cyan-400 text-2xl mb-3">&#8800;</div>
+          <h3 class="font-semibold text-lg mb-2">Drift Detection</h3>
+          <p class="text-gray-400 text-sm"><code class="text-cyan-300">pecto verify</code> detects when code behavior has drifted from its spec. <code class="text-cyan-300">pecto diff</code> compares git refs.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works -->
+  <section class="py-20 px-6 border-t border-gray-800">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-12">How it works</h2>
+      <div class="flex flex-wrap justify-center gap-4 md:gap-2 mb-8">
+        <div class="bg-gray-900 rounded-lg px-5 py-3 border border-gray-800">
+          <div class="text-cyan-400 font-mono font-bold">Parse</div>
+          <div class="text-xs text-gray-500 mt-1">tree-sitter AST</div>
+        </div>
+        <div class="text-gray-600 self-center text-xl hidden md:block">&rarr;</div>
+        <div class="bg-gray-900 rounded-lg px-5 py-3 border border-gray-800">
+          <div class="text-cyan-400 font-mono font-bold">Detect</div>
+          <div class="text-xs text-gray-500 mt-1">Frameworks</div>
+        </div>
+        <div class="text-gray-600 self-center text-xl hidden md:block">&rarr;</div>
+        <div class="bg-gray-900 rounded-lg px-5 py-3 border border-gray-800">
+          <div class="text-cyan-400 font-mono font-bold">Extract</div>
+          <div class="text-xs text-gray-500 mt-1">Behaviors</div>
+        </div>
+        <div class="text-gray-600 self-center text-xl hidden md:block">&rarr;</div>
+        <div class="bg-gray-900 rounded-lg px-5 py-3 border border-gray-800">
+          <div class="text-cyan-400 font-mono font-bold">Resolve</div>
+          <div class="text-xs text-gray-500 mt-1">Cross-file types</div>
+        </div>
+        <div class="text-gray-600 self-center text-xl hidden md:block">&rarr;</div>
+        <div class="bg-gray-900 rounded-lg px-5 py-3 border border-gray-800">
+          <div class="text-cyan-400 font-mono font-bold">Generate</div>
+          <div class="text-xs text-gray-500 mt-1">YAML / JSON</div>
+        </div>
+      </div>
+      <p class="text-gray-500 text-lg">No LLM. No API keys. No cloud. Just fast, deterministic analysis.</p>
+    </div>
+  </section>
+
+  <!-- Language Support -->
+  <section id="languages" class="py-20 px-6 border-t border-gray-800">
+    <div class="max-w-6xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-12">Language support</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <!-- Java -->
+        <div class="bg-gray-900 rounded-xl p-8 border border-gray-800">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="text-2xl">&#9749;</span>
+            <h3 class="text-xl font-bold">Java / Spring Boot</h3>
+            <span class="ml-auto px-2 py-1 text-xs bg-green-900 text-green-300 rounded">Ready</span>
+          </div>
+          <ul class="space-y-2 text-sm text-gray-400">
+            <li>Spring <code class="text-gray-300">@RestController</code>, <code class="text-gray-300">@GetMapping</code>, <code class="text-gray-300">@PostMapping</code></li>
+            <li>JPA <code class="text-gray-300">@Entity</code>, <code class="text-gray-300">@Table</code>, relationships</li>
+            <li>Spring Data <code class="text-gray-300">JpaRepository</code>, custom queries</li>
+            <li><code class="text-gray-300">@Service</code>, <code class="text-gray-300">@Transactional</code>, side effects</li>
+            <li>Bean Validation: <code class="text-gray-300">@NotBlank</code>, <code class="text-gray-300">@Email</code>, <code class="text-gray-300">@Size</code></li>
+            <li><code class="text-gray-300">@PreAuthorize</code>, <code class="text-gray-300">@CrossOrigin</code>, <code class="text-gray-300">@RateLimiter</code></li>
+            <li><code class="text-gray-300">@Scheduled</code>, <code class="text-gray-300">@EventListener</code></li>
+          </ul>
+        </div>
+        <!-- C# -->
+        <div class="bg-gray-900 rounded-xl p-8 border border-gray-800">
+          <div class="flex items-center gap-3 mb-6">
+            <span class="text-2xl">&#9830;</span>
+            <h3 class="text-xl font-bold">C# / .NET</h3>
+            <span class="ml-auto px-2 py-1 text-xs bg-green-900 text-green-300 rounded">Ready</span>
+          </div>
+          <ul class="space-y-2 text-sm text-gray-400">
+            <li>ASP.NET <code class="text-gray-300">[ApiController]</code>, <code class="text-gray-300">[HttpGet]</code>, <code class="text-gray-300">[Route]</code></li>
+            <li>EF Core <code class="text-gray-300">DbSet&lt;T&gt;</code>, <code class="text-gray-300">[Table]</code>, <code class="text-gray-300">[Key]</code></li>
+            <li>Data Annotations: <code class="text-gray-300">[Required]</code>, <code class="text-gray-300">[EmailAddress]</code>, <code class="text-gray-300">[Range]</code></li>
+            <li>Services by convention (*Service) or interface (I*Service)</li>
+            <li><code class="text-gray-300">[Authorize]</code>, <code class="text-gray-300">[AllowAnonymous]</code></li>
+            <li><code class="text-gray-300">BackgroundService</code>, <code class="text-gray-300">IHostedService</code></li>
+            <li><code class="text-gray-300">Task&lt;ActionResult&lt;T&gt;&gt;</code> async unwrapping</li>
+          </ul>
+        </div>
+      </div>
+      <p class="text-center text-gray-500 mt-8">Python (Django, Flask, FastAPI) and TypeScript (Express, NestJS) coming soon.</p>
+    </div>
+  </section>
+
+  <!-- Benchmarks -->
+  <section class="py-20 px-6 border-t border-gray-800">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-12">Performance</h2>
+      <div class="grid md:grid-cols-2 gap-8">
+        <div class="bg-gray-900 rounded-xl p-8 border border-gray-800 text-center">
+          <div class="text-5xl font-bold text-cyan-400 mb-2">0.5s</div>
+          <div class="text-lg font-semibold mb-1">Spring PetClinic REST</div>
+          <div class="text-sm text-gray-500">86 files &rarr; 18 capabilities</div>
+          <div class="text-xs text-gray-600 mt-1">8 entities, 7 repos, 2 services</div>
+        </div>
+        <div class="bg-gray-900 rounded-xl p-8 border border-gray-800 text-center">
+          <div class="text-5xl font-bold text-cyan-400 mb-2">1.6s</div>
+          <div class="text-lg font-semibold mb-1">eShopOnWeb (.NET)</div>
+          <div class="text-sm text-gray-500">254 files &rarr; 18 capabilities</div>
+          <div class="text-xs text-gray-600 mt-1">7 entities, 14 services, 25 endpoints</div>
+        </div>
+      </div>
+      <p class="text-center text-gray-500 text-sm mt-6">Parallel parsing with rayon. No network calls. Pure tree-sitter static analysis.</p>
+    </div>
+  </section>
+
+  <!-- Comparison -->
+  <section class="py-20 px-6 border-t border-gray-800">
+    <div class="max-w-4xl mx-auto">
+      <h2 class="text-3xl font-bold text-center mb-12">How pecto compares</h2>
+      <div class="overflow-x-auto">
+        <table class="w-full text-sm">
+          <thead>
+            <tr class="border-b border-gray-800">
+              <th class="text-left py-3 px-4 text-gray-400 font-normal">Feature</th>
+              <th class="py-3 px-4 text-cyan-400 font-bold">pecto</th>
+              <th class="py-3 px-4 text-gray-400">Swagger</th>
+              <th class="py-3 px-4 text-gray-400">SonarQube</th>
+            </tr>
+          </thead>
+          <tbody class="text-gray-400">
+            <tr class="border-b border-gray-800/50"><td class="py-2 px-4">REST endpoints</td><td class="text-center text-green-400">&#10003;</td><td class="text-center text-green-400">&#10003;</td><td class="text-center text-gray-600">&#10005;</td></tr>
+            <tr class="border-b border-gray-800/50"><td class="py-2 px-4">Database entities</td><td class="text-center text-green-400">&#10003;</td><td class="text-center text-gray-600">&#10005;</td><td class="text-center text-gray-600">&#10005;</td></tr>
+            <tr class="border-b border-gray-800/50"><td class="py-2 px-4">Business logic / side effects</td><td class="text-center text-green-400">&#10003;</td><td class="text-center text-gray-600">&#10005;</td><td class="text-center text-gray-600">&#10005;</td></tr>
+            <tr class="border-b border-gray-800/50"><td class="py-2 px-4">Security rules</td><td class="text-center text-green-400">&#10003;</td><td class="text-center text-gray-600">&#10005;</td><td class="text-center text-yellow-400">~</td></tr>
+            <tr class="border-b border-gray-800/50"><td class="py-2 px-4">Behavior drift detection</td><td class="text-center text-green-400">&#10003;</td><td class="text-center text-gray-600">&#10005;</td><td class="text-center text-gray-600">&#10005;</td></tr>
+            <tr class="border-b border-gray-800/50"><td class="py-2 px-4">Git-based behavior diff</td><td class="text-center text-green-400">&#10003;</td><td class="text-center text-gray-600">&#10005;</td><td class="text-center text-gray-600">&#10005;</td></tr>
+            <tr class="border-b border-gray-800/50"><td class="py-2 px-4">Fully offline</td><td class="text-center text-green-400">&#10003;</td><td class="text-center text-green-400">&#10003;</td><td class="text-center text-gray-600">&#10005;</td></tr>
+            <tr><td class="py-2 px-4">Speed (250 files)</td><td class="text-center text-cyan-400">&lt;2s</td><td class="text-center text-gray-400">N/A</td><td class="text-center text-gray-400">minutes</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- Install -->
+  <section id="install" class="py-20 px-6 border-t border-gray-800">
+    <div class="max-w-2xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-8">Get started</h2>
+      <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 font-mono text-left mb-6">
+        <p class="text-gray-500 text-sm"># Install from source</p>
+        <p class="text-white">cargo install pecto</p>
+        <p class="mt-4 text-gray-500 text-sm"># Analyze your project</p>
+        <p class="text-white">pecto init ./my-app</p>
+        <p class="mt-4 text-gray-500 text-sm"># Check for behavior drift in CI</p>
+        <p class="text-white">pecto verify specs.yaml</p>
+      </div>
+      <p class="text-gray-500 text-sm mb-6">
+        Or download pre-built binaries from
+        <a href="https://github.com/pecto-dev/pecto/releases" class="text-cyan-400 hover:underline">GitHub Releases</a>.
+      </p>
+      <a href="https://github.com/pecto-dev/pecto" target="_blank" class="inline-block px-8 py-3 bg-cyan-500 hover:bg-cyan-400 text-gray-950 font-semibold rounded-lg transition">
+        View on GitHub
+      </a>
+    </div>
+  </section>
+
+  <!-- Testimonials Placeholder -->
+  <section class="py-20 px-6 border-t border-gray-800">
+    <div class="max-w-4xl mx-auto text-center">
+      <h2 class="text-3xl font-bold mb-4">What developers say</h2>
+      <p class="text-gray-500 mb-12">Early feedback from the community.</p>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 border-dashed">
+          <p class="text-gray-500 italic text-sm mb-4">"Your feedback here."</p>
+          <p class="text-gray-600 text-xs">- Early adopter</p>
+        </div>
+        <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 border-dashed">
+          <p class="text-gray-500 italic text-sm mb-4">"Your feedback here."</p>
+          <p class="text-gray-600 text-xs">- Early adopter</p>
+        </div>
+        <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 border-dashed">
+          <p class="text-gray-500 italic text-sm mb-4">"Your feedback here."</p>
+          <p class="text-gray-600 text-xs">- Early adopter</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="py-12 px-6 border-t border-gray-800">
+    <div class="max-w-6xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <div class="flex items-center gap-2">
+        <span class="text-cyan-400 font-mono font-bold">pecto</span>
+        <span class="text-gray-600 text-sm">Built with Rust + tree-sitter</span>
+      </div>
+      <div class="flex items-center gap-6 text-sm text-gray-500">
+        <a href="https://github.com/pecto-dev/pecto" class="hover:text-white transition">GitHub</a>
+        <a href="https://github.com/pecto-dev/pecto/blob/main/LICENSE" class="hover:text-white transition">MIT License</a>
+        <a href="https://github.com/pecto-dev/pecto/blob/main/specs/FORMAT.md" class="hover:text-white transition">Spec Format</a>
+      </div>
+    </div>
+  </footer>
+</Layout>
