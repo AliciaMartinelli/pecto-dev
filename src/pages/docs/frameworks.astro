@@ -41,7 +41,7 @@ import DocsLayout from '../../components/DocsLayout.astro';
 <table>
   <thead><tr><th>Pattern</th><th>What pecto extracts</th></tr></thead>
   <tbody>
-    <tr><td><code>{'extends JpaRepository<T, ID>'}</code></td><td>Standard CRUD operations</td></tr>
+    <tr><td><code>extends JpaRepository&lt;T, ID&gt;</code></td><td>Standard CRUD operations</td></tr>
     <tr><td><code>extends CrudRepository</code></td><td>Standard CRUD operations</td></tr>
     <tr><td><code>findByEmail(...)</code></td><td>Custom query: "Find by email"</td></tr>
     <tr><td><code>@Query("SELECT ...")</code></td><td>JPQL/SQL query text</td></tr>
@@ -69,7 +69,7 @@ import DocsLayout from '../../components/DocsLayout.astro';
   </tbody>
 </table>
 
-<hr />
+<div class="my-12 border-t border-gray-800"></div>
 
 <h2>C# / .NET</h2>
 
@@ -79,7 +79,7 @@ import DocsLayout from '../../components/DocsLayout.astro';
   <tbody>
     <tr><td><code>[ApiController]</code></td><td>Controller detection</td></tr>
     <tr><td><code>[Route("api/[controller]")]</code></td><td>Base path with template substitution</td></tr>
-    <tr><td><code>[HttpGet]</code>, <code>{'[HttpPost("{id}")]'}</code>, etc.</td><td>HTTP method + path</td></tr>
+    <tr><td><code>[HttpGet]</code>, <code>[HttpPost]</code>, etc.</td><td>HTTP method + path</td></tr>
     <tr><td><code>[FromBody]</code></td><td>Request body type + fields (cross-file)</td></tr>
     <tr><td><code>[FromRoute]</code></td><td>Path parameter</td></tr>
     <tr><td><code>[FromQuery]</code></td><td>Query parameter</td></tr>
@@ -95,7 +95,7 @@ import DocsLayout from '../../components/DocsLayout.astro';
   <tbody>
     <tr><td><code>[Table("name")]</code></td><td>Entity with table name</td></tr>
     <tr><td><code>[Key]</code></td><td>Primary key (also triggers entity detection)</td></tr>
-    <tr><td><code>{'DbSet<T>'}</code> in DbContext</td><td>Entity type T resolved from context</td></tr>
+    <tr><td><code>DbSet&lt;T&gt;</code> in DbContext</td><td>Entity type T resolved from context</td></tr>
     <tr><td><code>[Required]</code>, <code>[MaxLength]</code>, etc.</td><td>Validation constraints</td></tr>
     <tr><td><code>[ForeignKey]</code>, <code>[InverseProperty]</code></td><td>Relationship constraints</td></tr>
     <tr><td><code>[NotMapped]</code></td><td>Property skipped</td></tr>
@@ -126,7 +126,7 @@ import DocsLayout from '../../components/DocsLayout.astro';
   </tbody>
 </table>
 
-<hr />
+<div class="my-12 border-t border-gray-800"></div>
 
 <h2>Not extracted (by design)</h2>
 <ul>
@@ -134,7 +134,7 @@ import DocsLayout from '../../components/DocsLayout.astro';
   <li><strong>Method-chaining DSLs</strong> — Spring Security filter chains, EF Fluent API, Minimal API</li>
   <li><strong>WPF/XAML</strong> — requires separate XAML parser</li>
   <li><strong>LINQ queries</strong> — complex expression trees</li>
-  <li><strong>DI registration</strong> — <code>{'services.AddScoped<I,T>()'}</code> chains</li>
+  <li><strong>DI registration</strong> — <code>services.AddScoped&lt;I,T&gt;()</code> chains</li>
   <li><strong>Auth flow detection</strong> — JWT vs Session vs OAuth2 (heuristic, fragile)</li>
 </ul>
 

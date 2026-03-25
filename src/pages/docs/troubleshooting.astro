@@ -29,7 +29,7 @@ import DocsLayout from '../../components/DocsLayout.astro';
 
 <ul>
   <li><strong>Java:</strong> Entities need <code>@Entity</code> annotation. Without it, they won't be detected.</li>
-  <li><strong>C#:</strong> Entities are detected via <code>[Table]</code>, <code>[Key]</code> attributes, or <code>{'DbSet<T>'}</code> in a DbContext. Plain POCOs without any of these won't be found.</li>
+  <li><strong>C#:</strong> Entities are detected via <code>[Table]</code>, <code>[Key]</code> attributes, or <code>DbSet&lt;T&gt;</code> in a DbContext. Plain POCOs without any of these won't be found.</li>
   <li><strong>Fluent API:</strong> Entity Framework Fluent API configuration (in <code>OnModelCreating</code>) is not parsed. Use data annotations instead.</li>
 </ul>
 
