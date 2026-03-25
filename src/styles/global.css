@@ -8,10 +8,11 @@
 }
 
 .gradient-text {
-  background: linear-gradient(90deg, var(--am-periwinkle), var(--am-lilac), var(--am-razz), var(--am-apricot));
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
+  background: linear-gradient(90deg, #C9C9EB, #E185C8, #DF0F51, #FFA161) !important;
+  -webkit-background-clip: text !important;
+  background-clip: text !important;
+  color: transparent !important;
+  display: inline-block;
 }
 
 .font-heading {
