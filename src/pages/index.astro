@@ -93,13 +93,15 @@ import Layout from '../layouts/Layout.astro';
   <!-- Features -->
   <section id="features" class="py-20 px-6 border-t border-gray-800">
     <div class="max-w-6xl mx-auto">
-      <h2 class="font-heading text-3xl font-bold text-center mb-4">What pecto extracts</h2>
-      <p class="text-gray-400 text-center mb-12">From annotations, patterns, and code structure — no guessing.</p>
+      <h2 class="font-heading text-3xl font-bold text-center mb-4">What pecto does</h2>
+      <p class="text-gray-400 text-center mb-4">Extract, analyze, and visualize — from annotations, patterns, and code structure.</p>
+
+      <p class="text-xs text-gray-600 text-center uppercase tracking-wider mb-4 mt-12">Extraction</p>
       <div class="grid md:grid-cols-3 gap-6">
         <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 hover:border-[#E185C8]/30 transition">
           <div class="text-[#E185C8] text-2xl mb-3">&#8644;</div>
           <h3 class="font-semibold text-lg mb-2">REST Endpoints</h3>
-          <p class="text-gray-400 text-sm">HTTP methods, paths, path variables, query params, request bodies, validation rules, error responses.</p>
+          <p class="text-gray-400 text-sm">HTTP methods, paths, parameters, request bodies, validation rules, error responses.</p>
         </div>
         <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 hover:border-[#E185C8]/30 transition">
           <div class="text-[#E185C8] text-2xl mb-3">&#9638;</div>
@@ -108,23 +110,46 @@ import Layout from '../layouts/Layout.astro';
         </div>
         <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 hover:border-[#E185C8]/30 transition">
           <div class="text-[#E185C8] text-2xl mb-3">&#9881;</div>
-          <h3 class="font-semibold text-lg mb-2">Service Layer</h3>
-          <p class="text-gray-400 text-sm">Operations, transactions, side effects — DB writes, event publishing, service calls.</p>
+          <h3 class="font-semibold text-lg mb-2">Services + Security</h3>
+          <p class="text-gray-400 text-sm">Operations, transactions, side effects, auth rules, CORS, rate limits, scheduled tasks.</p>
+        </div>
+      </div>
+
+      <p class="text-xs text-gray-600 text-center uppercase tracking-wider mb-4 mt-12">Intelligence</p>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 hover:border-[#E185C8]/30 transition">
+          <div class="text-[#E185C8] text-2xl mb-3">&#9741;</div>
+          <h3 class="font-semibold text-lg mb-2">Dependency Graph</h3>
+          <p class="text-gray-400 text-sm">See how controllers, services, and repositories connect. Export as text, DOT, JSON, or interactive HTML.</p>
         </div>
         <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 hover:border-[#E185C8]/30 transition">
-          <div class="text-[#E185C8] text-2xl mb-3">&#128274;</div>
-          <h3 class="font-semibold text-lg mb-2">Security</h3>
-          <p class="text-gray-400 text-sm">Authentication requirements, role-based access, CORS configuration, rate limiting.</p>
+          <div class="text-[#E185C8] text-2xl mb-3">&#9673;</div>
+          <h3 class="font-semibold text-lg mb-2">Domain Clustering</h3>
+          <p class="text-gray-400 text-sm">Auto-group capabilities into business domains. See which domains depend on each other.</p>
         </div>
         <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 hover:border-[#E185C8]/30 transition">
-          <div class="text-[#E185C8] text-2xl mb-3">&#9200;</div>
-          <h3 class="font-semibold text-lg mb-2">Scheduled Tasks</h3>
-          <p class="text-gray-400 text-sm">Cron jobs, background services, event listeners, timer-based polling.</p>
+          <div class="text-[#E185C8] text-2xl mb-3">&#9889;</div>
+          <h3 class="font-semibold text-lg mb-2">Impact Analysis</h3>
+          <p class="text-gray-400 text-sm"><code class="text-[#C9C9EB]">pecto impact Owner</code> — know what breaks before you change it.</p>
         </div>
+      </div>
+
+      <p class="text-xs text-gray-600 text-center uppercase tracking-wider mb-4 mt-12">Workflow</p>
+      <div class="grid md:grid-cols-3 gap-6">
         <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 hover:border-[#E185C8]/30 transition">
           <div class="text-[#E185C8] text-2xl mb-3">&#8800;</div>
           <h3 class="font-semibold text-lg mb-2">Drift Detection</h3>
-          <p class="text-gray-400 text-sm"><code class="text-[#C9C9EB]">pecto verify</code> detects when code behavior has drifted from its spec. <code class="text-[#C9C9EB]">pecto diff</code> compares git refs.</p>
+          <p class="text-gray-400 text-sm"><code class="text-[#C9C9EB]">pecto verify</code> in CI catches undocumented behavior changes. <code class="text-[#C9C9EB]">pecto diff</code> compares git refs.</p>
+        </div>
+        <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 hover:border-[#E185C8]/30 transition">
+          <div class="text-[#E185C8] text-2xl mb-3">&#9881;</div>
+          <h3 class="font-semibold text-lg mb-2">Dashboard + Report</h3>
+          <p class="text-gray-400 text-sm"><code class="text-[#C9C9EB]">pecto serve</code> for a live web dashboard. <code class="text-[#C9C9EB]">pecto report</code> for a shareable HTML file.</p>
+        </div>
+        <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 hover:border-[#E185C8]/30 transition">
+          <div class="text-[#E185C8] text-2xl mb-3">&#129302;</div>
+          <h3 class="font-semibold text-lg mb-2">AI Context Export</h3>
+          <p class="text-gray-400 text-sm"><code class="text-[#C9C9EB]">pecto context</code> — compact project summary optimized for LLM context windows.</p>
         </div>
       </div>
     </div>
