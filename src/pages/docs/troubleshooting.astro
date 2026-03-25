@@ -1,0 +1,61 @@
+---
+import DocsLayout from '../../components/DocsLayout.astro';
+---
+
+<DocsLayout title="Troubleshooting" description="Common issues and how to resolve them.">
+
+<h2>No capabilities found</h2>
+
+<p><strong>Symptom:</strong> <code>pecto init</code> reports 0 capabilities.</p>
+
+<ul>
+  <li><strong>Wrong language detected?</strong> Use <code>--language java</code> or <code>--language csharp</code> explicitly.</li>
+  <li><strong>Test files only?</strong> pecto excludes <code>/test/</code>, <code>/Test/</code>, <code>/Tests/</code> directories. Make sure your source code is outside these paths.</li>
+  <li><strong>No framework annotations?</strong> pecto needs <code>@RestController</code> (Java) or <code>[ApiController]</code> (C#) to detect controllers. Plain classes without annotations are only detected as services if they end in "Service".</li>
+  <li><strong>Interface-based controllers?</strong> If controllers implement an interface for HTTP mappings (like OpenAPI-generated code), pecto may not find endpoints. The class must have the mapping annotations directly.</li>
+</ul>
+
+<h2>Empty dependencies</h2>
+
+<p><strong>Symptom:</strong> <code>pecto graph</code> shows no edges.</p>
+
+<ul>
+  <li><strong>Field declarations matter.</strong> pecto resolves dependencies by scanning field declarations (<code>private UserService userService</code>). If services are used via method parameters or local variables, they won't be tracked.</li>
+  <li><strong>C# constructor injection.</strong> For C#, pecto reads constructor parameters. Make sure your services use constructor injection, not property injection.</li>
+  <li><strong>Naming conventions.</strong> Dependency resolution maps field types to capability names via kebab-case conversion: <code>OrderService</code> → <code>order-service</code>. Unusual class names may not resolve.</li>
+</ul>
+
+<h2>Missing entities</h2>
+
+<ul>
+  <li><strong>Java:</strong> Entities need <code>@Entity</code> annotation. Without it, they won't be detected.</li>
+  <li><strong>C#:</strong> Entities are detected via <code>[Table]</code>, <code>[Key]</code> attributes, or <code>{'DbSet<T>'}</code> in a DbContext. Plain POCOs without any of these won't be found.</li>
+  <li><strong>Fluent API:</strong> Entity Framework Fluent API configuration (in <code>OnModelCreating</code>) is not parsed. Use data annotations instead.</li>
+</ul>
+
+<h2>Spec drift false positives</h2>
+
+<p><strong>Symptom:</strong> <code>pecto verify</code> fails but nothing meaningful changed.</p>
+
+<ul>
+  <li><strong>Timestamp changes.</strong> The <code>analyzed</code> field changes on every run. Consider stripping it before comparing, or use <code>pecto diff</code> instead.</li>
+  <li><strong>Ordering changes.</strong> Capability order depends on file system traversal order, which may differ across platforms. This is a known limitation.</li>
+</ul>
+
+<h2>Performance</h2>
+
+<ul>
+  <li>pecto uses <strong>parallel file parsing</strong> with rayon. On large projects (1000+ files), the bottleneck is file I/O, not parsing.</li>
+  <li>Typical performance: <strong>~100-300 files/second</strong> on modern hardware.</li>
+  <li>The <code>obj/</code>, <code>bin/</code>, and <code>test/</code> directories are automatically excluded.</li>
+</ul>
+
+<h2>Getting help</h2>
+
+<ul>
+  <li><a href="https://github.com/pecto-dev/pecto/issues">GitHub Issues</a> — report bugs or request features</li>
+  <li><code>pecto init --verbose</code> — shows per-capability details for debugging</li>
+  <li><code>pecto context</code> — generate a project summary you can paste into an AI assistant for help</li>
+</ul>
+
+</DocsLayout>

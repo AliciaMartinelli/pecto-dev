@@ -1,0 +1,77 @@
+---
+import DocsLayout from '../../components/DocsLayout.astro';
+---
+
+<DocsLayout title="CI Integration" description="Set up automated behavior drift detection in your pipeline.">
+
+<h2>How it works</h2>
+<ol>
+  <li>Generate a spec with <code>pecto init --output specs.yaml</code></li>
+  <li>Commit <code>specs.yaml</code> to your repo</li>
+  <li>In CI, run <code>pecto verify specs.yaml</code></li>
+  <li>If the code's behavior has changed without updating the spec, the build fails (exit code 1)</li>
+</ol>
+
+<h2>GitHub Actions</h2>
+
+<h3>Simple setup</h3>
+<pre><code>name: Behavior Check
+
+on: [push, pull_request]
+
+jobs:
+  pecto:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Install pecto
+        run: cargo install pecto
+
+      - name: Verify behavior spec
+        run: pecto verify specs.yaml</code></pre>
+
+<h3>Using the pecto action</h3>
+<pre><code>- uses: pecto-dev/pecto/.github/actions/pecto@main
+  with:
+    spec-file: specs.yaml
+    path: .
+    language: auto</code></pre>
+
+<p>The action caches the pecto binary for faster subsequent runs.</p>
+
+<h2>Exit codes</h2>
+<table>
+  <thead><tr><th>Code</th><th>Meaning</th></tr></thead>
+  <tbody>
+    <tr><td><code>0</code></td><td>Spec matches code — no drift</td></tr>
+    <tr><td><code>1</code></td><td>Spec has drifted — behavior changed</td></tr>
+    <tr><td><code>non-zero</code></td><td>Error (file not found, parse error, etc.)</td></tr>
+  </tbody>
+</table>
+
+<h2>Workflow: keeping specs up to date</h2>
+
+<p>When <code>pecto verify</code> fails in CI:</p>
+
+<ol>
+  <li>Run <code>pecto init --output specs.yaml</code> locally to regenerate</li>
+  <li>Review the diff: <code>git diff specs.yaml</code></li>
+  <li>If the behavior change is intentional, commit the updated spec</li>
+  <li>If unintentional, fix the code</li>
+</ol>
+
+<h2>Comparing PRs</h2>
+<p>Use <code>pecto diff</code> in PR reviews to see behavior changes:</p>
+
+<pre><code>- name: Show behavior changes
+  run: pecto diff origin/main HEAD</code></pre>
+
+<h2>Tips</h2>
+<ul>
+  <li>Use <code>--quiet</code> flag when piping output in scripts</li>
+  <li>Store specs in a <code>specs/</code> directory for multi-module projects</li>
+  <li>Add <code>specs.yaml</code> to your PR template checklist: "Did you update the behavior spec?"</li>
+</ul>
+
+</DocsLayout>

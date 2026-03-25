@@ -1,0 +1,138 @@
+---
+import DocsLayout from '../../components/DocsLayout.astro';
+---
+
+<DocsLayout title="Command Reference" description="Complete reference for all pecto CLI commands.">
+
+<h2>Global flags</h2>
+
+<table>
+  <thead><tr><th>Flag</th><th>Values</th><th>Default</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td><code>--language</code></td><td><code>auto</code>, <code>java</code>, <code>csharp</code></td><td><code>auto</code></td><td>Language to analyze</td></tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2>pecto init</h2>
+<p>Analyze a project and generate behavior specs.</p>
+<pre><code>pecto init [path] [--format yaml|json] [--output file] [--verbose] [--quiet]</code></pre>
+
+<table>
+  <thead><tr><th>Flag</th><th>Default</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td><code>path</code></td><td><code>.</code></td><td>Project directory to analyze</td></tr>
+    <tr><td><code>--format, -f</code></td><td><code>yaml</code></td><td>Output format</td></tr>
+    <tr><td><code>--output, -o</code></td><td>stdout</td><td>Write to file instead of stdout</td></tr>
+    <tr><td><code>--verbose, -v</code></td><td>off</td><td>Per-capability breakdown</td></tr>
+    <tr><td><code>--quiet, -q</code></td><td>off</td><td>Suppress status, only print spec</td></tr>
+  </tbody>
+</table>
+
+<h3>Examples</h3>
+<pre><code># Analyze current directory
+pecto init
+
+# Save as JSON
+pecto init ./my-app --format json --output specs.json
+
+# Verbose output for debugging
+pecto init ./my-app --verbose
+
+# Pipe-friendly (no stderr)
+pecto init ./my-app --quiet > specs.yaml</code></pre>
+
+<hr />
+
+<h2>pecto show</h2>
+<p>Show the spec for a specific capability.</p>
+<pre><code>pecto show &lt;name&gt; [--path .]</code></pre>
+
+<p>Supports substring matching. If not found, lists available capabilities.</p>
+
+<pre><code>pecto show user-service
+pecto show user  # matches any capability containing "user"</code></pre>
+
+<hr />
+
+<h2>pecto verify</h2>
+<p>Check if code matches an existing spec file. Returns exit code 1 on drift.</p>
+<pre><code>pecto verify &lt;spec-file&gt; [--path .]</code></pre>
+
+<pre><code>pecto verify specs.yaml
+pecto verify specs.json --path ./my-app</code></pre>
+
+<p>Auto-detects YAML/JSON from file extension.</p>
+
+<hr />
+
+<h2>pecto diff</h2>
+<p>Compare behavior specs between two git refs.</p>
+<pre><code>pecto diff &lt;base-ref&gt; [head-ref] [--path .]</code></pre>
+
+<pre><code>pecto diff main HEAD
+pecto diff v1.0.0 v2.0.0
+pecto diff HEAD~5</code></pre>
+
+<p>Uses <code>git archive</code> to export each ref, then analyzes both and shows the diff.</p>
+
+<hr />
+
+<h2>pecto domains</h2>
+<p>Show capabilities grouped by business domain.</p>
+<pre><code>pecto domains [path]</code></pre>
+
+<p>Clusters capabilities by naming convention (e.g. <code>user-controller</code> + <code>user-entity</code> + <code>user-service</code> &rarr; "user" domain) and dependency connections.</p>
+
+<hr />
+
+<h2>pecto graph</h2>
+<p>Show the dependency graph between capabilities.</p>
+<pre><code>pecto graph [path] [--format text|dot|json]</code></pre>
+
+<table>
+  <thead><tr><th>Format</th><th>Use case</th></tr></thead>
+  <tbody>
+    <tr><td><code>text</code> (default)</td><td>Quick terminal inspection</td></tr>
+    <tr><td><code>dot</code></td><td>Graphviz: <code>pecto graph --format dot | dot -Tpng > graph.png</code></td></tr>
+    <tr><td><code>json</code></td><td>Integration with other tools</td></tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2>pecto impact</h2>
+<p>Show which capabilities are affected when you change something.</p>
+<pre><code>pecto impact &lt;name&gt; [--path .]</code></pre>
+
+<pre><code>pecto impact Owner
+# Shows: Owner Entity → OwnerRepository → ClinicService → OwnerRestController</code></pre>
+
+<p>Uses reverse BFS on the dependency graph to trace all dependents.</p>
+
+<hr />
+
+<h2>pecto context</h2>
+<p>Export a compact, LLM-optimized summary of the project.</p>
+<pre><code>pecto context [path]</code></pre>
+
+<p>Outputs a condensed text format designed to fit in ~4K tokens. Useful as context for ChatGPT, Claude, or other AI tools.</p>
+
+<hr />
+
+<h2>pecto report</h2>
+<p>Generate a self-contained HTML report with interactive dependency graph.</p>
+<pre><code>pecto report [path] [--output pecto-report.html]</code></pre>
+
+<p>Opens in any browser. Includes D3.js force-directed graph, domain sidebar, and capability browser.</p>
+
+<hr />
+
+<h2>pecto serve</h2>
+<p>Start a local web dashboard.</p>
+<pre><code>pecto serve [path] [--port 4321]</code></pre>
+
+<p>Serves an interactive dashboard at <code>http://localhost:4321</code> with dependency graph, domain clusters, and search. JSON API available at <code>/api/spec</code>.</p>
+
+</DocsLayout>

@@ -1,0 +1,164 @@
+---
+import DocsLayout from '../../components/DocsLayout.astro';
+---
+
+<DocsLayout title="Spec Format v0.2" description="Reference for the pecto behavior specification format.">
+
+<h2>Overview</h2>
+<p>pecto outputs structured behavior specs in YAML or JSON. The format is language-agnostic — the same structure represents Java and C# projects.</p>
+
+<h2>Top-level structure</h2>
+<pre><code>name: my-app
+analyzed: '2026-03-25T14:30:00Z'
+files_analyzed: 86
+capabilities: [...]
+dependencies: [...]
+domains: [...]</code></pre>
+
+<table>
+  <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td><code>name</code></td><td>string</td><td>Project name (from directory name)</td></tr>
+    <tr><td><code>analyzed</code></td><td>string</td><td>ISO 8601 UTC timestamp</td></tr>
+    <tr><td><code>files_analyzed</code></td><td>number</td><td>Total source files processed</td></tr>
+    <tr><td><code>capabilities</code></td><td>array</td><td>Extracted behaviors grouped by source</td></tr>
+    <tr><td><code>dependencies</code></td><td>array</td><td>Edges between capabilities</td></tr>
+    <tr><td><code>domains</code></td><td>array</td><td>Business domain clusters</td></tr>
+  </tbody>
+</table>
+
+<h2>Capability</h2>
+<p>A capability groups related behaviors from a single source file.</p>
+<pre><code>- name: user-controller
+  source: src/UserController.java
+  endpoints: [...]
+  operations: [...]
+  entities: [...]
+  scheduled_tasks: [...]</code></pre>
+
+<p>Empty arrays are omitted from output.</p>
+
+<h2>Endpoint</h2>
+<pre><code>- method: POST
+  path: /api/users
+  input:
+    body:
+      name: CreateUserRequest
+      fields:
+        email: String
+        name: String
+    path_params:
+      - name: id
+        type: Long
+        required: true
+    query_params:
+      - name: status
+        type: String
+  validation:
+    - field: email
+      constraints: ["@NotBlank", "@Email"]
+  behaviors:
+    - name: success
+      returns:
+        status: 201
+        body:
+          name: User
+    - name: not-found
+      returns:
+        status: 404
+  security:
+    authentication: required
+    roles: ["hasRole('ADMIN')"]
+    cors: "origins: https://example.com"
+    rate_limit: "rate-limiter: apiLimit"</code></pre>
+
+<h2>Behavior</h2>
+<table>
+  <thead><tr><th>Field</th><th>Type</th><th>Description</th></tr></thead>
+  <tbody>
+    <tr><td><code>name</code></td><td>string</td><td><code>success</code>, <code>not-found</code>, <code>conflict</code>, etc.</td></tr>
+    <tr><td><code>condition</code></td><td>string?</td><td>When this behavior occurs</td></tr>
+    <tr><td><code>returns.status</code></td><td>number</td><td>HTTP status code</td></tr>
+    <tr><td><code>returns.body</code></td><td>TypeRef?</td><td>Response type with fields</td></tr>
+    <tr><td><code>side_effects</code></td><td>array</td><td>What the code does beyond returning</td></tr>
+  </tbody>
+</table>
+
+<h2>Side Effects</h2>
+<table>
+  <thead><tr><th>Kind</th><th>Fields</th><th>Example</th></tr></thead>
+  <tbody>
+    <tr><td><code>db_insert</code></td><td><code>table</code></td><td>Insert via orderRepository</td></tr>
+    <tr><td><code>db_update</code></td><td><code>description</code></td><td>Delete via EF Core</td></tr>
+    <tr><td><code>event</code></td><td><code>name</code></td><td>OrderCreatedEvent</td></tr>
+    <tr><td><code>call</code></td><td><code>target</code></td><td>paymentService.charge</td></tr>
+  </tbody>
+</table>
+
+<h2>Entity</h2>
+<pre><code>- name: Owner
+  table: owners
+  fields:
+    - name: id
+      type: Integer
+      constraints: ["@Id", "@GeneratedValue"]
+    - name: firstName
+      type: String
+      constraints: ["@NotBlank"]</code></pre>
+
+<h2>Operation</h2>
+<pre><code>- name: createOrder
+  source_method: OrderService#createOrder
+  input:
+    name: CreateOrderRequest
+  transaction: required
+  behaviors:
+    - name: success
+      returns:
+        status: 200
+      side_effects:
+        - kind: db_insert
+          table: orderRepository
+        - kind: event
+          name: OrderCreatedEvent</code></pre>
+
+<h2>Scheduled Task</h2>
+<pre><code>- name: hourlyCleanup
+  schedule: "cron: 0 0 * * * *"
+
+- name: handleOrderCreated
+  schedule: "event: OrderCreatedEvent"
+  description: Handles OrderCreatedEvent events</code></pre>
+
+<h2>DependencyEdge</h2>
+<pre><code>dependencies:
+  - from: user-controller
+    to: user-service
+    kind: calls
+    references:
+      - "UserController#getById → userService.findById"</code></pre>
+
+<table>
+  <thead><tr><th>Kind</th><th>Meaning</th></tr></thead>
+  <tbody>
+    <tr><td><code>calls</code></td><td>Service-to-service or controller-to-service</td></tr>
+    <tr><td><code>queries</code></td><td>Service-to-repository or DbContext</td></tr>
+    <tr><td><code>listens</code></td><td>Event listener to event publisher</td></tr>
+    <tr><td><code>validates</code></td><td>Controller to DTO type</td></tr>
+  </tbody>
+</table>
+
+<h2>Domain</h2>
+<pre><code>domains:
+  - name: user
+    capabilities:
+      - user-controller
+      - user-entity
+      - user-service
+    external_dependencies:
+      - order</code></pre>
+
+<h2>Versioning</h2>
+<p>Current version: <strong>v0.2</strong> (stabilizing). Breaking changes will increment the major version.</p>
+
+</DocsLayout>

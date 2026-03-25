@@ -1,0 +1,141 @@
+---
+import DocsLayout from '../../components/DocsLayout.astro';
+---
+
+<DocsLayout title="Framework Coverage" description="What pecto extracts from each language and framework.">
+
+<h2>Java / Spring Boot</h2>
+
+<h3>Controllers</h3>
+<table>
+  <thead><tr><th>Annotation</th><th>What pecto extracts</th></tr></thead>
+  <tbody>
+    <tr><td><code>@RestController</code> / <code>@Controller</code></td><td>Controller detection, capability name</td></tr>
+    <tr><td><code>@RequestMapping("/path")</code></td><td>Base path for all endpoints</td></tr>
+    <tr><td><code>@GetMapping</code>, <code>@PostMapping</code>, etc.</td><td>HTTP method + path</td></tr>
+    <tr><td><code>@RequestBody</code></td><td>Request body type + fields (cross-file)</td></tr>
+    <tr><td><code>@PathVariable</code></td><td>Path parameter name + type</td></tr>
+    <tr><td><code>@RequestParam</code></td><td>Query parameter + required flag</td></tr>
+    <tr><td><code>@ResponseStatus</code></td><td>Override success status code</td></tr>
+    <tr><td><code>@ExceptionHandler</code></td><td>Error behaviors for all endpoints</td></tr>
+    <tr><td><code>@PreAuthorize</code> / <code>@Secured</code></td><td>Roles and auth requirements</td></tr>
+    <tr><td><code>@CrossOrigin</code></td><td>CORS configuration</td></tr>
+    <tr><td><code>@RateLimiter</code></td><td>Rate limiting config</td></tr>
+  </tbody>
+</table>
+
+<h3>Entities</h3>
+<table>
+  <thead><tr><th>Annotation</th><th>What pecto extracts</th></tr></thead>
+  <tbody>
+    <tr><td><code>@Entity</code></td><td>Entity detection</td></tr>
+    <tr><td><code>@Table(name)</code></td><td>Table name</td></tr>
+    <tr><td><code>@Id</code>, <code>@GeneratedValue</code></td><td>Primary key constraints</td></tr>
+    <tr><td><code>@Column</code></td><td>Column constraints (unique, nullable, length)</td></tr>
+    <tr><td><code>@OneToMany</code>, <code>@ManyToOne</code>, etc.</td><td>Relationship type</td></tr>
+    <tr><td><code>@NotNull</code>, <code>@NotBlank</code>, <code>@Email</code>, <code>@Size</code></td><td>Validation constraints</td></tr>
+  </tbody>
+</table>
+
+<h3>Repositories</h3>
+<table>
+  <thead><tr><th>Pattern</th><th>What pecto extracts</th></tr></thead>
+  <tbody>
+    <tr><td><code>{'extends JpaRepository<T, ID>'}</code></td><td>Standard CRUD operations</td></tr>
+    <tr><td><code>extends CrudRepository</code></td><td>Standard CRUD operations</td></tr>
+    <tr><td><code>findByEmail(...)</code></td><td>Custom query: "Find by email"</td></tr>
+    <tr><td><code>@Query("SELECT ...")</code></td><td>JPQL/SQL query text</td></tr>
+  </tbody>
+</table>
+
+<h3>Services</h3>
+<table>
+  <thead><tr><th>Annotation</th><th>What pecto extracts</th></tr></thead>
+  <tbody>
+    <tr><td><code>@Service</code> / <code>@Component</code></td><td>Service detection, public methods</td></tr>
+    <tr><td><code>@Transactional</code></td><td>Transaction mode (required, read-only, requires-new)</td></tr>
+    <tr><td><code>.save()</code>, <code>.delete()</code></td><td>DB side effects</td></tr>
+    <tr><td><code>publishEvent(new XxxEvent)</code></td><td>Event publishing side effects</td></tr>
+  </tbody>
+</table>
+
+<h3>Scheduled Tasks</h3>
+<table>
+  <thead><tr><th>Annotation</th><th>What pecto extracts</th></tr></thead>
+  <tbody>
+    <tr><td><code>@Scheduled(cron="...")</code></td><td>Cron expression</td></tr>
+    <tr><td><code>@Scheduled(fixedRate=N)</code></td><td>Polling interval</td></tr>
+    <tr><td><code>@EventListener</code></td><td>Event type and handler</td></tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2>C# / .NET</h2>
+
+<h3>ASP.NET Core Controllers</h3>
+<table>
+  <thead><tr><th>Attribute</th><th>What pecto extracts</th></tr></thead>
+  <tbody>
+    <tr><td><code>[ApiController]</code></td><td>Controller detection</td></tr>
+    <tr><td><code>[Route("api/[controller]")]</code></td><td>Base path with template substitution</td></tr>
+    <tr><td><code>[HttpGet]</code>, <code>{'[HttpPost("{id}")]'}</code>, etc.</td><td>HTTP method + path</td></tr>
+    <tr><td><code>[FromBody]</code></td><td>Request body type + fields (cross-file)</td></tr>
+    <tr><td><code>[FromRoute]</code></td><td>Path parameter</td></tr>
+    <tr><td><code>[FromQuery]</code></td><td>Query parameter</td></tr>
+    <tr><td><code>[ProducesResponseType(StatusCodes.X)]</code></td><td>Response status + error behaviors</td></tr>
+    <tr><td><code>[Authorize]</code> / <code>[AllowAnonymous]</code></td><td>Auth + roles</td></tr>
+    <tr><td><code>Task&lt;ActionResult&lt;T&gt;&gt;</code></td><td>Async return type unwrapping</td></tr>
+  </tbody>
+</table>
+
+<h3>Entity Framework Core</h3>
+<table>
+  <thead><tr><th>Pattern</th><th>What pecto extracts</th></tr></thead>
+  <tbody>
+    <tr><td><code>[Table("name")]</code></td><td>Entity with table name</td></tr>
+    <tr><td><code>[Key]</code></td><td>Primary key (also triggers entity detection)</td></tr>
+    <tr><td><code>{'DbSet<T>'}</code> in DbContext</td><td>Entity type T resolved from context</td></tr>
+    <tr><td><code>[Required]</code>, <code>[MaxLength]</code>, etc.</td><td>Validation constraints</td></tr>
+    <tr><td><code>[ForeignKey]</code>, <code>[InverseProperty]</code></td><td>Relationship constraints</td></tr>
+    <tr><td><code>[NotMapped]</code></td><td>Property skipped</td></tr>
+  </tbody>
+</table>
+
+<h3>Services</h3>
+<table>
+  <thead><tr><th>Pattern</th><th>What pecto extracts</th></tr></thead>
+  <tbody>
+    <tr><td>Class name ends in <code>Service</code></td><td>Service detection</td></tr>
+    <tr><td>Implements <code>I*Service</code></td><td>Service detection</td></tr>
+    <tr><td>Constructor injection</td><td>Dependencies (IOrderService → order-service)</td></tr>
+    <tr><td><code>SaveChangesAsync()</code></td><td>Transaction: unit-of-work</td></tr>
+    <tr><td><code>BeginTransactionAsync()</code></td><td>Transaction: explicit</td></tr>
+    <tr><td><code>_context.Add()</code></td><td>DB insert side effect</td></tr>
+    <tr><td><code>_mediator.Publish()</code></td><td>Event side effect (MediatR)</td></tr>
+  </tbody>
+</table>
+
+<h3>Background Services</h3>
+<table>
+  <thead><tr><th>Pattern</th><th>What pecto extracts</th></tr></thead>
+  <tbody>
+    <tr><td><code>: BackgroundService</code></td><td>Background task from ExecuteAsync</td></tr>
+    <tr><td><code>: IHostedService</code></td><td>Hosted service from StartAsync</td></tr>
+    <tr><td><code>TimeSpan.FromMinutes(5)</code></td><td>Timer interval</td></tr>
+  </tbody>
+</table>
+
+<hr />
+
+<h2>Not extracted (by design)</h2>
+<ul>
+  <li><strong>Business logic from if/else flows</strong> — too complex for static analysis</li>
+  <li><strong>Method-chaining DSLs</strong> — Spring Security filter chains, EF Fluent API, Minimal API</li>
+  <li><strong>WPF/XAML</strong> — requires separate XAML parser</li>
+  <li><strong>LINQ queries</strong> — complex expression trees</li>
+  <li><strong>DI registration</strong> — <code>{'services.AddScoped<I,T>()'}</code> chains</li>
+  <li><strong>Auth flow detection</strong> — JWT vs Session vs OAuth2 (heuristic, fragile)</li>
+</ul>
+
+</DocsLayout>

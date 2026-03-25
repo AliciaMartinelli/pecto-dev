@@ -1,0 +1,102 @@
+---
+import DocsLayout from '../../components/DocsLayout.astro';
+---
+
+<DocsLayout title="Getting Started" description="Install pecto and analyze your first project in under a minute.">
+
+<h2>Installation</h2>
+
+<h3>From source (requires Rust)</h3>
+<pre><code>cargo install pecto</code></pre>
+
+<h3>Pre-built binaries</h3>
+<p>Download from <a href="https://github.com/pecto-dev/pecto/releases">GitHub Releases</a> for Linux, macOS (Intel + ARM), and Windows.</p>
+
+<h2>Your first analysis</h2>
+
+<p>Point pecto at any Java or C# project directory:</p>
+
+<pre><code>pecto init ./my-project</code></pre>
+
+<p>pecto automatically detects the language by looking for <code>.csproj</code>/<code>.sln</code> (C#) or <code>pom.xml</code>/<code>build.gradle</code> (Java). You can also specify explicitly:</p>
+
+<pre><code>pecto init ./my-project --language java
+pecto init ./my-project --language csharp</code></pre>
+
+<h3>Example output</h3>
+
+<pre><code>pecto Analyzing /home/dev/spring-petclinic-rest...
+✓ Analyzed 86 files → 18 capabilities
+
+  8 entities
+  7 repositories (45 operations)
+  2 services (30 operations)
+  1 controller (1 endpoint)</code></pre>
+
+<p>The spec is printed to stdout as YAML by default. Save it to a file:</p>
+
+<pre><code>pecto init ./my-project --output specs.yaml</code></pre>
+
+<p>Or as JSON:</p>
+
+<pre><code>pecto init ./my-project --format json --output specs.json</code></pre>
+
+<h2>Explore your project</h2>
+
+<h3>View domains</h3>
+<p>See how capabilities cluster into business domains:</p>
+<pre><code>pecto domains ./my-project</code></pre>
+
+<h3>Dependency graph</h3>
+<p>See how services connect to each other:</p>
+<pre><code># Text output
+pecto graph ./my-project
+
+# Graphviz DOT format
+pecto graph ./my-project --format dot | dot -Tpng > graph.png
+
+# JSON for tooling
+pecto graph ./my-project --format json</code></pre>
+
+<h3>Impact analysis</h3>
+<p>Find out what breaks if you change something:</p>
+<pre><code>pecto impact Owner ./my-project</code></pre>
+
+<h3>Interactive dashboard</h3>
+<p>Launch a local web dashboard with an interactive dependency graph:</p>
+<pre><code>pecto serve ./my-project
+# Opens http://localhost:4321</code></pre>
+
+<h3>HTML report</h3>
+<p>Generate a shareable, self-contained HTML report:</p>
+<pre><code>pecto report ./my-project --output report.html</code></pre>
+
+<h2>Detect behavior drift</h2>
+
+<p>Commit your spec to the repo, then check for drift in CI:</p>
+
+<pre><code># Generate initial spec
+pecto init . --output specs.yaml
+
+# Later: verify code still matches
+pecto verify specs.yaml</code></pre>
+
+<p>Exit code 1 means the spec has drifted. See <a href="/docs/ci">CI Integration</a> for pipeline setup.</p>
+
+<h2>Compare git refs</h2>
+
+<p>See behavior changes between branches or commits:</p>
+
+<pre><code>pecto diff main HEAD
+pecto diff v1.0.0 v2.0.0</code></pre>
+
+<h2>Next steps</h2>
+
+<ul>
+  <li><a href="/docs/commands">Command Reference</a> — all commands and flags</li>
+  <li><a href="/docs/spec-format">Spec Format</a> — understand the output</li>
+  <li><a href="/docs/ci">CI Integration</a> — set up automated drift detection</li>
+  <li><a href="/docs/frameworks">Framework Coverage</a> — what pecto extracts per language</li>
+</ul>
+
+</DocsLayout>
