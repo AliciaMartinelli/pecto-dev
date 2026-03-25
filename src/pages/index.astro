@@ -19,9 +19,9 @@ import Layout from '../layouts/Layout.astro';
   <!-- Hero -->
   <section class="pt-32 pb-20 px-6">
     <div class="max-w-4xl mx-auto text-center">
-      <h1 class="text-5xl md:text-6xl font-bold tracking-tight mb-6">
+      <h1 class="font-heading text-5xl md:text-6xl font-bold tracking-tight mb-6">
         Your code has behaviors.<br/>
-        <span class="text-cyan-400">pecto makes them visible.</span>
+        <span class="gradient-text">pecto makes them visible.</span>
       </h1>
       <p class="text-xl text-gray-400 mb-10 max-w-2xl mx-auto">
         Extract behavior specs from Java and C# codebases in seconds. Static analysis powered by tree-sitter. No LLMs. No cloud.
@@ -69,7 +69,7 @@ import Layout from '../layouts/Layout.astro';
   <!-- Why Section -->
   <section class="py-20 px-6 border-t border-gray-800">
     <div class="max-w-6xl mx-auto">
-      <h2 class="text-3xl font-bold text-center mb-4">The problem</h2>
+      <h2 class="font-heading text-3xl font-bold text-center mb-4">The problem</h2>
       <p class="text-gray-400 text-center mb-12 max-w-2xl mx-auto">
         Code grows faster than understanding. AI generates code nobody fully grasps. Documentation is always outdated. pecto fixes this.
       </p>
@@ -93,7 +93,7 @@ import Layout from '../layouts/Layout.astro';
   <!-- Features -->
   <section id="features" class="py-20 px-6 border-t border-gray-800">
     <div class="max-w-6xl mx-auto">
-      <h2 class="text-3xl font-bold text-center mb-4">What pecto extracts</h2>
+      <h2 class="font-heading text-3xl font-bold text-center mb-4">What pecto extracts</h2>
       <p class="text-gray-400 text-center mb-12">From annotations, patterns, and code structure — no guessing.</p>
       <div class="grid md:grid-cols-3 gap-6">
         <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 hover:border-cyan-800 transition">
@@ -133,7 +133,7 @@ import Layout from '../layouts/Layout.astro';
   <!-- How It Works -->
   <section class="py-20 px-6 border-t border-gray-800">
     <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-12">How it works</h2>
+      <h2 class="font-heading text-3xl font-bold mb-12">How it works</h2>
       <div class="flex flex-wrap justify-center gap-4 md:gap-2 mb-8">
         <div class="bg-gray-900 rounded-lg px-5 py-3 border border-gray-800">
           <div class="text-cyan-400 font-mono font-bold">Parse</div>
@@ -167,7 +167,7 @@ import Layout from '../layouts/Layout.astro';
   <!-- Language Support -->
   <section id="languages" class="py-20 px-6 border-t border-gray-800">
     <div class="max-w-6xl mx-auto">
-      <h2 class="text-3xl font-bold text-center mb-12">Language support</h2>
+      <h2 class="font-heading text-3xl font-bold text-center mb-12">Language support</h2>
       <div class="grid md:grid-cols-2 gap-8">
         <!-- Java -->
         <div class="bg-gray-900 rounded-xl p-8 border border-gray-800">
@@ -211,7 +211,7 @@ import Layout from '../layouts/Layout.astro';
   <!-- Benchmarks -->
   <section class="py-20 px-6 border-t border-gray-800">
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-3xl font-bold text-center mb-12">Performance</h2>
+      <h2 class="font-heading text-3xl font-bold text-center mb-12">Performance</h2>
       <div class="grid md:grid-cols-2 gap-8">
         <div class="bg-gray-900 rounded-xl p-8 border border-gray-800 text-center">
           <div class="text-5xl font-bold text-cyan-400 mb-2">0.5s</div>
@@ -233,7 +233,7 @@ import Layout from '../layouts/Layout.astro';
   <!-- Comparison -->
   <section class="py-20 px-6 border-t border-gray-800">
     <div class="max-w-4xl mx-auto">
-      <h2 class="text-3xl font-bold text-center mb-12">How pecto compares</h2>
+      <h2 class="font-heading text-3xl font-bold text-center mb-12">How pecto compares</h2>
       <div class="overflow-x-auto">
         <table class="w-full text-sm">
           <thead>
@@ -262,7 +262,7 @@ import Layout from '../layouts/Layout.astro';
   <!-- Install -->
   <section id="install" class="py-20 px-6 border-t border-gray-800">
     <div class="max-w-2xl mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-8">Get started</h2>
+      <h2 class="font-heading text-3xl font-bold mb-8">Get started</h2>
       <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 font-mono text-left mb-6">
         <p class="text-gray-500 text-sm"># Install from source</p>
         <p class="text-white">cargo install pecto</p>
@@ -284,7 +284,7 @@ import Layout from '../layouts/Layout.astro';
   <!-- Testimonials Placeholder -->
   <section class="py-20 px-6 border-t border-gray-800">
     <div class="max-w-4xl mx-auto text-center">
-      <h2 class="text-3xl font-bold mb-4">What developers say</h2>
+      <h2 class="font-heading text-3xl font-bold mb-4">What developers say</h2>
       <p class="text-gray-500 mb-12">Early feedback from the community.</p>
       <div class="grid md:grid-cols-3 gap-6">
         <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 border-dashed">
@@ -299,6 +299,22 @@ import Layout from '../layouts/Layout.astro';
           <p class="text-gray-500 italic text-sm mb-4">"Your feedback here."</p>
           <p class="text-gray-600 text-xs">- Early adopter</p>
         </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact -->
+  <section class="py-20 px-6 border-t border-gray-800">
+    <div class="max-w-2xl mx-auto text-center">
+      <h2 class="font-heading text-3xl font-bold mb-4">Get in touch</h2>
+      <p class="text-gray-400 mb-8">Questions, feedback, or enterprise inquiries? Reach out directly.</p>
+      <div class="flex flex-col sm:flex-row gap-4 justify-center">
+        <a href="mailto:contact@alicia-martinelli.com" class="px-6 py-3 bg-gray-900 border border-gray-700 hover:border-gray-500 rounded-lg text-gray-300 transition">
+          contact@alicia-martinelli.com
+        </a>
+        <a href="https://github.com/AliciaMartinelli/pecto/issues" target="_blank" class="px-6 py-3 bg-gray-900 border border-gray-700 hover:border-gray-500 rounded-lg text-gray-300 transition">
+          GitHub Issues
+        </a>
       </div>
     </div>
   </section>

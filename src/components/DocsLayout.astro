@@ -23,7 +23,7 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/docs';
 
     <main class="flex-1 overflow-y-auto">
       <div class="max-w-3xl mx-auto px-6 py-12">
-        <h1 class="text-3xl font-bold mb-2">{title}</h1>
+        <h1 class="font-heading text-3xl font-bold mb-2">{title}</h1>
         {description && <p class="text-gray-400 mb-8">{description}</p>}
 
         <div class="prose">
@@ -36,8 +36,8 @@ const currentPath = Astro.url.pathname.replace(/\/$/, '') || '/docs';
 
 <style is:global>
   /* Prose styling for docs content */
-  .prose h2 { font-size: 1.5rem; font-weight: 700; margin-top: 2.5rem; margin-bottom: 0.75rem; color: #e2e8f0; }
-  .prose h3 { font-size: 1.125rem; font-weight: 600; margin-top: 2rem; margin-bottom: 0.5rem; color: #cbd5e1; }
+  .prose h2 { font-family: 'Public Sans', system-ui, sans-serif; font-size: 1.5rem; font-weight: 700; margin-top: 2.5rem; margin-bottom: 0.75rem; color: #e2e8f0; }
+  .prose h3 { font-family: 'Public Sans', system-ui, sans-serif; font-size: 1.125rem; font-weight: 600; margin-top: 2rem; margin-bottom: 0.5rem; color: #cbd5e1; }
   .prose p { color: #94a3b8; line-height: 1.75; margin-bottom: 1rem; }
   .prose ul { color: #94a3b8; list-style: disc; padding-left: 1.5rem; margin-bottom: 1rem; }
   .prose ol { color: #94a3b8; list-style: decimal; padding-left: 1.5rem; margin-bottom: 1rem; }

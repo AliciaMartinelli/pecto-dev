@@ -1,1 +1,24 @@
 @import "tailwindcss";
+
+:root {
+  --am-periwinkle: #C9C9EB;
+  --am-lilac: #E185C8;
+  --am-razz: #DF0F51;
+  --am-apricot: #FFA161;
+}
+
+.gradient-text {
+  background: linear-gradient(90deg, var(--am-periwinkle), var(--am-lilac), var(--am-razz), var(--am-apricot));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.font-heading {
+  font-family: 'Public Sans', system-ui, sans-serif;
+}
+
+::selection {
+  background: rgba(201, 201, 235, 0.3);
+  color: #e2e8f0;
+}
