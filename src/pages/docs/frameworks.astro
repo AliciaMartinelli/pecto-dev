@@ -229,6 +229,54 @@ import DocsLayout from '../../components/DocsLayout.astro';
 
 <div class="my-8 border-t border-gray-800/50"></div>
 
+<h2>TypeScript / JavaScript</h2>
+
+<h3>Express Routes</h3>
+<table>
+  <thead><tr><th>Pattern</th><th>What pecto extracts</th></tr></thead>
+  <tbody>
+    <tr><td><code>router.get("/path", handler)</code></td><td>GET endpoint with path</td></tr>
+    <tr><td><code>app.post("/path", handler)</code></td><td>POST endpoint</td></tr>
+    <tr><td><code>router.put</code>, <code>.delete</code>, <code>.patch</code></td><td>HTTP method + path</td></tr>
+    <tr><td><code>:id</code> in route string</td><td>Path parameter (converted to &#123;id&#125;)</td></tr>
+  </tbody>
+</table>
+
+<h3>NestJS</h3>
+<table>
+  <thead><tr><th>Pattern</th><th>What pecto extracts</th></tr></thead>
+  <tbody>
+    <tr><td><code>@Controller('prefix')</code></td><td>Controller with base path</td></tr>
+    <tr><td><code>@Get()</code>, <code>@Post()</code>, etc.</td><td>HTTP method + path</td></tr>
+    <tr><td><code>@UseGuards(AuthGuard)</code></td><td>Security: authentication required</td></tr>
+    <tr><td><code>@Injectable()</code></td><td>Service detection</td></tr>
+  </tbody>
+</table>
+
+<h3>Next.js App Router</h3>
+<table>
+  <thead><tr><th>Pattern</th><th>What pecto extracts</th></tr></thead>
+  <tbody>
+    <tr><td><code>export async function GET</code></td><td>GET endpoint</td></tr>
+    <tr><td><code>export async function POST</code></td><td>POST endpoint</td></tr>
+    <tr><td><code>app/api/users/[id]/route.ts</code></td><td>Path: /api/users/&#123;id&#125;</td></tr>
+  </tbody>
+</table>
+
+<h3>Entities + Services</h3>
+<table>
+  <thead><tr><th>Pattern</th><th>What pecto extracts</th></tr></thead>
+  <tbody>
+    <tr><td><code>@Entity('table')</code> (TypeORM)</td><td>Entity with table name</td></tr>
+    <tr><td><code>@Column()</code>, <code>@PrimaryGeneratedColumn()</code></td><td>Fields with constraints</td></tr>
+    <tr><td><code>@ManyToOne</code>, <code>@OneToMany</code></td><td>Relationships</td></tr>
+    <tr><td><code>new Schema()</code> (Mongoose)</td><td>Schema detection</td></tr>
+    <tr><td><code>@Injectable()</code> / <code>*Service</code> class</td><td>Service with public methods</td></tr>
+  </tbody>
+</table>
+
+<div class="my-8 border-t border-gray-800/50"></div>
+
 <h2>Not extracted (by design)</h2>
 <ul>
   <li><strong>Business logic from if/else flows</strong> — too complex for static analysis</li>
