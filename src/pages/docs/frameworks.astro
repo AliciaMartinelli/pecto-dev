@@ -166,6 +166,69 @@ import DocsLayout from '../../components/DocsLayout.astro';
 
 <div class="my-8 border-t border-gray-800/50"></div>
 
+<h2>Python</h2>
+
+<h3>FastAPI Routes</h3>
+<table>
+  <thead><tr><th>Pattern</th><th>What pecto extracts</th></tr></thead>
+  <tbody>
+    <tr><td><code>@router.get("/path")</code></td><td>GET endpoint with path</td></tr>
+    <tr><td><code>@app.post("/path")</code></td><td>POST endpoint</td></tr>
+    <tr><td><code>@router.put</code>, <code>@router.delete</code>, <code>@router.patch</code></td><td>HTTP method + path</td></tr>
+    <tr><td>Type-annotated params (<code>user_id: int</code>)</td><td>Path parameters with type</td></tr>
+    <tr><td>PascalCase params (<code>item: ItemCreate</code>)</td><td>Request body (Pydantic model)</td></tr>
+    <tr><td><code>Depends(get_current_user)</code></td><td>Security: authentication required</td></tr>
+    <tr><td>Return type annotation</td><td>Response body type</td></tr>
+  </tbody>
+</table>
+
+<h3>Flask Routes</h3>
+<table>
+  <thead><tr><th>Pattern</th><th>What pecto extracts</th></tr></thead>
+  <tbody>
+    <tr><td><code>@app.route("/path", methods=["GET"])</code></td><td>Endpoint with HTTP method</td></tr>
+    <tr><td><code>@blueprint.route("/path")</code></td><td>Blueprint-based routing</td></tr>
+    <tr><td><code>methods=["GET", "POST"]</code></td><td>Multiple HTTP methods</td></tr>
+  </tbody>
+</table>
+
+<h3>Django REST Framework</h3>
+<table>
+  <thead><tr><th>Pattern</th><th>What pecto extracts</th></tr></thead>
+  <tbody>
+    <tr><td><code>class UserViewSet(ModelViewSet)</code></td><td>CRUD endpoints (list, create, retrieve, update, destroy)</td></tr>
+    <tr><td><code>@api_view(['GET', 'POST'])</code></td><td>Function-based view with methods</td></tr>
+  </tbody>
+</table>
+
+<h3>Models / Entities</h3>
+<table>
+  <thead><tr><th>Pattern</th><th>What pecto extracts</th></tr></thead>
+  <tbody>
+    <tr><td><code>class User(Base)</code> (SQLAlchemy)</td><td>Entity with <code>__tablename__</code></td></tr>
+    <tr><td><code>Column(String, nullable=False)</code></td><td>Field type + constraints</td></tr>
+    <tr><td><code>relationship("Post")</code></td><td>Relationship to other entity</td></tr>
+    <tr><td><code>class Article(models.Model)</code> (Django)</td><td>Entity detection</td></tr>
+    <tr><td><code>models.CharField(max_length=200)</code></td><td>Field type + max_length constraint</td></tr>
+    <tr><td><code>models.ForeignKey</code>, <code>ManyToManyField</code></td><td>Relationships</td></tr>
+    <tr><td><code>class UserCreate(BaseModel)</code> (Pydantic)</td><td>Schema with field types</td></tr>
+    <tr><td><code>Field(min_length=2, max_length=50)</code></td><td>Validation constraints</td></tr>
+  </tbody>
+</table>
+
+<h3>Services + Tasks</h3>
+<table>
+  <thead><tr><th>Pattern</th><th>What pecto extracts</th></tr></thead>
+  <tbody>
+    <tr><td><code>class UserService</code></td><td>Service detection (name ends in Service/Repository/UseCase)</td></tr>
+    <tr><td>Public methods (no <code>_</code> prefix)</td><td>Operations with params + return types</td></tr>
+    <tr><td><code>@shared_task</code> / <code>@app.task</code></td><td>Celery task</td></tr>
+    <tr><td><code>@periodic_task</code></td><td>Scheduled task with cron/interval</td></tr>
+  </tbody>
+</table>
+
+<div class="my-8 border-t border-gray-800/50"></div>
+
 <h2>Not extracted (by design)</h2>
 <ul>
   <li><strong>Business logic from if/else flows</strong> — too complex for static analysis</li>

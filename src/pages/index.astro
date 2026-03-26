@@ -230,7 +230,25 @@ import Layout from '../layouts/Layout.astro';
           </ul>
         </div>
       </div>
-      <p class="text-center text-gray-500 mt-8">Python (Django, Flask, FastAPI) and TypeScript (Express, NestJS) coming soon.</p>
+      <!-- Python -->
+      <div class="bg-gray-900 rounded-xl p-8 border border-gray-800 md:col-span-2 mt-8">
+        <div class="flex items-center gap-3 mb-6">
+          <span class="text-2xl">&#128013;</span>
+          <h3 class="text-xl font-bold">Python</h3>
+          <span class="ml-auto px-2 py-1 text-xs bg-green-900 text-green-300 rounded">Ready</span>
+        </div>
+        <ul class="space-y-2 text-sm text-gray-400 md:columns-2">
+          <li><strong class="text-gray-300">FastAPI:</strong> <code class="text-gray-300">@router.get</code>, <code class="text-gray-300">@app.post</code>, typed params, <code class="text-gray-300">Depends()</code></li>
+          <li><strong class="text-gray-300">Flask:</strong> <code class="text-gray-300">@app.route</code>, <code class="text-gray-300">@blueprint.route</code>, methods</li>
+          <li><strong class="text-gray-300">Django REST:</strong> <code class="text-gray-300">ModelViewSet</code>, <code class="text-gray-300">@api_view</code></li>
+          <li><strong class="text-gray-300">SQLAlchemy:</strong> <code class="text-gray-300">Column()</code>, <code class="text-gray-300">relationship()</code></li>
+          <li><strong class="text-gray-300">Django Models:</strong> <code class="text-gray-300">CharField</code>, <code class="text-gray-300">ForeignKey</code></li>
+          <li><strong class="text-gray-300">Pydantic:</strong> <code class="text-gray-300">BaseModel</code>, <code class="text-gray-300">Field()</code> constraints</li>
+          <li><strong class="text-gray-300">Celery:</strong> <code class="text-gray-300">@shared_task</code>, <code class="text-gray-300">@periodic_task</code></li>
+          <li><strong class="text-gray-300">Services:</strong> *Service classes, public methods</li>
+        </ul>
+      </div>
+      <p class="text-center text-gray-500 mt-8">TypeScript (Express, NestJS, Next.js) coming soon.</p>
     </div>
   </section>
 
