@@ -4,9 +4,9 @@ import DocsLayout from '../../components/DocsLayout.astro';
 
 <DocsLayout title="Framework Coverage" description="What pecto extracts from each language and framework.">
 
-<h2>Java / Spring Boot</h2>
+<h2>Java (Spring Boot + Jakarta EE)</h2>
 
-<h3>Controllers</h3>
+<h3>Spring Boot Controllers</h3>
 <table>
   <thead><tr><th>Annotation</th><th>What pecto extracts</th></tr></thead>
   <tbody>
@@ -21,6 +21,44 @@ import DocsLayout from '../../components/DocsLayout.astro';
     <tr><td><code>@PreAuthorize</code> / <code>@Secured</code></td><td>Roles and auth requirements</td></tr>
     <tr><td><code>@CrossOrigin</code></td><td>CORS configuration</td></tr>
     <tr><td><code>@RateLimiter</code></td><td>Rate limiting config</td></tr>
+  </tbody>
+</table>
+
+<h3>Jakarta EE / JAX-RS Resources</h3>
+<table>
+  <thead><tr><th>Annotation</th><th>What pecto extracts</th></tr></thead>
+  <tbody>
+    <tr><td><code>@Path("/api")</code></td><td>Resource detection (class or interface), base path</td></tr>
+    <tr><td><code>@GET</code>, <code>@POST</code>, <code>@PUT</code>, <code>@DELETE</code></td><td>HTTP method</td></tr>
+    <tr><td><code>@Path("/users")</code> on method</td><td>Method-level path (combined with base)</td></tr>
+    <tr><td><code>@PathParam("id")</code></td><td>Path parameter</td></tr>
+    <tr><td><code>@QueryParam("status")</code></td><td>Query parameter</td></tr>
+    <tr><td>Unannotated parameter</td><td>Request body (for POST/PUT)</td></tr>
+    <tr><td><code>@RolesAllowed("ADMIN")</code></td><td>Role-based security</td></tr>
+    <tr><td><code>@PermitAll</code></td><td>Public endpoint (overrides class-level auth)</td></tr>
+    <tr><td><code>@DenyAll</code></td><td>Forbidden endpoint</td></tr>
+  </tbody>
+</table>
+
+<h3>Jakarta EE Services</h3>
+<table>
+  <thead><tr><th>Annotation</th><th>What pecto extracts</th></tr></thead>
+  <tbody>
+    <tr><td><code>@Stateless</code> / <code>@Stateful</code></td><td>EJB service detection</td></tr>
+    <tr><td><code>@RequestScoped</code> / <code>@ApplicationScoped</code></td><td>CDI service detection</td></tr>
+    <tr><td><code>@Inject</code></td><td>Dependency injection (field-level)</td></tr>
+    <tr><td><code>@TransactionAttribute</code></td><td>Transaction propagation</td></tr>
+    <tr><td><code>em.persist()</code>, <code>em.merge()</code>, <code>em.remove()</code></td><td>EntityManager side effects</td></tr>
+  </tbody>
+</table>
+
+<h3>Jakarta EE Repositories</h3>
+<table>
+  <thead><tr><th>Pattern</th><th>What pecto extracts</th></tr></thead>
+  <tbody>
+    <tr><td><code>@PersistenceContext EntityManager</code></td><td>Repository detection</td></tr>
+    <tr><td>extends <code>*Repository</code> base class</td><td>Repository detection + entity type from generic</td></tr>
+    <tr><td>Public methods</td><td>Custom query operations</td></tr>
   </tbody>
 </table>
 

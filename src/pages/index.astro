@@ -198,16 +198,17 @@ import Layout from '../layouts/Layout.astro';
         <div class="bg-gray-900 rounded-xl p-8 border border-gray-800">
           <div class="flex items-center gap-3 mb-6">
             <span class="text-2xl">&#9749;</span>
-            <h3 class="text-xl font-bold">Java / Spring Boot</h3>
+            <h3 class="text-xl font-bold">Java</h3>
             <span class="ml-auto px-2 py-1 text-xs bg-green-900 text-green-300 rounded">Ready</span>
           </div>
           <ul class="space-y-2 text-sm text-gray-400">
-            <li>Spring <code class="text-gray-300">@RestController</code>, <code class="text-gray-300">@GetMapping</code>, <code class="text-gray-300">@PostMapping</code></li>
-            <li>JPA <code class="text-gray-300">@Entity</code>, <code class="text-gray-300">@Table</code>, relationships</li>
-            <li>Spring Data <code class="text-gray-300">JpaRepository</code>, custom queries</li>
-            <li><code class="text-gray-300">@Service</code>, <code class="text-gray-300">@Transactional</code>, side effects</li>
-            <li>Bean Validation: <code class="text-gray-300">@NotBlank</code>, <code class="text-gray-300">@Email</code>, <code class="text-gray-300">@Size</code></li>
-            <li><code class="text-gray-300">@PreAuthorize</code>, <code class="text-gray-300">@CrossOrigin</code>, <code class="text-gray-300">@RateLimiter</code></li>
+            <li><strong class="text-gray-300">Spring Boot:</strong> <code class="text-gray-300">@RestController</code>, <code class="text-gray-300">@GetMapping</code>, <code class="text-gray-300">@PostMapping</code></li>
+            <li><strong class="text-gray-300">Jakarta EE:</strong> <code class="text-gray-300">@Path</code>, <code class="text-gray-300">@GET</code>, <code class="text-gray-300">@POST</code>, <code class="text-gray-300">@PathParam</code></li>
+            <li>JPA <code class="text-gray-300">@Entity</code>, <code class="text-gray-300">@Table</code>, relationships, EntityManager</li>
+            <li>Spring Data <code class="text-gray-300">JpaRepository</code> + JPA <code class="text-gray-300">@PersistenceContext</code></li>
+            <li><code class="text-gray-300">@Service</code>, <code class="text-gray-300">@Stateless</code>, <code class="text-gray-300">@Inject</code>, side effects</li>
+            <li>Validation: <code class="text-gray-300">@NotBlank</code>, <code class="text-gray-300">@Email</code>, <code class="text-gray-300">@Size</code></li>
+            <li>Security: <code class="text-gray-300">@PreAuthorize</code>, <code class="text-gray-300">@RolesAllowed</code>, <code class="text-gray-300">@PermitAll</code></li>
             <li><code class="text-gray-300">@Scheduled</code>, <code class="text-gray-300">@EventListener</code></li>
           </ul>
         </div>
