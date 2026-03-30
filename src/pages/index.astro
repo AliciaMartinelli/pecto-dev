@@ -344,12 +344,13 @@ import Layout from '../layouts/Layout.astro';
     <div class="max-w-2xl mx-auto text-center">
       <h2 class="font-heading text-3xl font-bold mb-8">Get started</h2>
       <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 font-mono text-left mb-6">
-        <p class="text-gray-500 text-sm"># Install from source</p>
+        <p class="text-gray-500 text-sm"># Install</p>
         <p class="text-white">cargo install pecto</p>
         <p class="mt-4 text-gray-500 text-sm"># Analyze your project</p>
-        <p class="text-white">pecto init ./my-app</p>
-        <p class="mt-4 text-gray-500 text-sm"># Check for behavior drift in CI</p>
-        <p class="text-white">pecto verify specs.yaml</p>
+        <p class="text-white">cd ./my-app</p>
+        <p class="text-white">pecto init</p>
+        <p class="mt-4 text-gray-500 text-sm"># Launch interactive dashboard</p>
+        <p class="text-white">pecto serve</p>
       </div>
       <p class="text-gray-500 text-sm mb-6">
         Or download pre-built binaries from
