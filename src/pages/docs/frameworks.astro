@@ -207,11 +207,14 @@ import DocsLayout from '../../components/DocsLayout.astro';
   <tbody>
     <tr><td><code>class User(Base)</code> (SQLAlchemy)</td><td>Entity with <code>__tablename__</code></td></tr>
     <tr><td><code>Column(String, nullable=False)</code></td><td>Field type + constraints</td></tr>
+    <tr><td><code>mapped_column(Integer, primary_key=True)</code></td><td>SQLAlchemy 2.0 field extraction</td></tr>
     <tr><td><code>relationship("Post")</code></td><td>Relationship to other entity</td></tr>
+    <tr><td><code>class User(UserBase, table=True)</code> (SQLModel)</td><td>SQLModel table entity with field inheritance</td></tr>
     <tr><td><code>class Article(models.Model)</code> (Django)</td><td>Entity detection</td></tr>
     <tr><td><code>models.CharField(max_length=200)</code></td><td>Field type + max_length constraint</td></tr>
     <tr><td><code>models.ForeignKey</code>, <code>ManyToManyField</code></td><td>Relationships</td></tr>
     <tr><td><code>class UserCreate(BaseModel)</code> (Pydantic)</td><td>Schema with field types</td></tr>
+    <tr><td><code>class UserCreate(UserBase)</code></td><td>Inherited fields resolved (same-file)</td></tr>
     <tr><td><code>Field(min_length=2, max_length=50)</code></td><td>Validation constraints</td></tr>
   </tbody>
 </table>
@@ -221,9 +224,11 @@ import DocsLayout from '../../components/DocsLayout.astro';
   <thead><tr><th>Pattern</th><th>What pecto extracts</th></tr></thead>
   <tbody>
     <tr><td><code>class UserService</code></td><td>Service detection (name ends in Service/Repository/UseCase)</td></tr>
+    <tr><td>Module-level functions in <code>crud.py</code></td><td>CRUD operations as service capability</td></tr>
     <tr><td>Public methods (no <code>_</code> prefix)</td><td>Operations with params + return types</td></tr>
     <tr><td><code>@shared_task</code> / <code>@app.task</code></td><td>Celery task</td></tr>
     <tr><td><code>@periodic_task</code></td><td>Scheduled task with cron/interval</td></tr>
+    <tr><td><code>scheduler.add_job(func, IntervalTrigger(...))</code></td><td>APScheduler job with schedule</td></tr>
   </tbody>
 </table>
 

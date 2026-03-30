@@ -11,7 +11,7 @@ import Layout from '../layouts/Layout.astro';
         <a href="#features" class="text-sm text-gray-400 hover:text-white transition">Features</a>
         <a href="#languages" class="text-sm text-gray-400 hover:text-white transition">Languages</a>
         <a href="/docs" class="text-sm text-gray-400 hover:text-white transition">Docs</a>
-        <a href="https://github.com/pecto-dev/pecto" target="_blank" class="text-sm text-gray-400 hover:text-white transition">GitHub</a>
+        <a href="https://github.com/AliciaMartinelli/pecto" target="_blank" class="text-sm text-gray-400 hover:text-white transition">GitHub</a>
       </div>
     </div>
   </nav>
@@ -30,7 +30,7 @@ import Layout from '../layouts/Layout.astro';
         <a href="#install" class="px-6 py-3 bg-[#DF0F51] hover:bg-[#E185C8] text-white font-semibold rounded-lg transition">
           Get Started
         </a>
-        <a href="https://github.com/pecto-dev/pecto" target="_blank" class="px-6 py-3 border border-gray-700 hover:border-gray-500 text-gray-300 rounded-lg transition">
+        <a href="https://github.com/AliciaMartinelli/pecto" target="_blank" class="px-6 py-3 border border-gray-700 hover:border-gray-500 text-gray-300 rounded-lg transition">
           View on GitHub
         </a>
       </div>
@@ -93,23 +93,20 @@ import Layout from '../layouts/Layout.astro';
   <!-- Features -->
   <section id="features" class="py-20 px-6 border-t border-gray-800">
     <div class="max-w-6xl mx-auto">
-      <h2 class="font-heading text-3xl font-bold text-center mb-4">What pecto does</h2>
+      <h2 class="font-heading text-3xl font-bold text-center mb-4">What <span class="gradient-text">pecto</span> does</h2>
       <p class="text-gray-400 text-center mb-4">Extract, analyze, and visualize — from annotations, patterns, and code structure.</p>
 
       <p class="text-xs text-gray-600 text-center uppercase tracking-wider mb-4 mt-12">Extraction</p>
       <div class="grid md:grid-cols-3 gap-6">
         <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 hover:border-[#E185C8]/30 transition">
-          <div class="text-[#E185C8] text-2xl mb-3">&#8644;</div>
           <h3 class="font-semibold text-lg mb-2">REST Endpoints</h3>
           <p class="text-gray-400 text-sm">HTTP methods, paths, parameters, request bodies, validation rules, error responses.</p>
         </div>
         <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 hover:border-[#E185C8]/30 transition">
-          <div class="text-[#E185C8] text-2xl mb-3">&#9638;</div>
           <h3 class="font-semibold text-lg mb-2">Database Entities</h3>
           <p class="text-gray-400 text-sm">Tables, fields, types, constraints, relationships. JPA/Hibernate and Entity Framework Core.</p>
         </div>
         <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 hover:border-[#E185C8]/30 transition">
-          <div class="text-[#E185C8] text-2xl mb-3">&#9881;</div>
           <h3 class="font-semibold text-lg mb-2">Services + Security</h3>
           <p class="text-gray-400 text-sm">Operations, transactions, side effects, auth rules, CORS, rate limits, scheduled tasks.</p>
         </div>
@@ -118,17 +115,14 @@ import Layout from '../layouts/Layout.astro';
       <p class="text-xs text-gray-600 text-center uppercase tracking-wider mb-4 mt-12">Intelligence</p>
       <div class="grid md:grid-cols-3 gap-6">
         <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 hover:border-[#E185C8]/30 transition">
-          <div class="text-[#E185C8] text-2xl mb-3">&#9741;</div>
           <h3 class="font-semibold text-lg mb-2">Dependency Graph</h3>
           <p class="text-gray-400 text-sm">See how controllers, services, and repositories connect. Export as text, DOT, JSON, or interactive HTML.</p>
         </div>
         <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 hover:border-[#E185C8]/30 transition">
-          <div class="text-[#E185C8] text-2xl mb-3">&#9673;</div>
           <h3 class="font-semibold text-lg mb-2">Domain Clustering</h3>
           <p class="text-gray-400 text-sm">Auto-group capabilities into business domains. See which domains depend on each other.</p>
         </div>
         <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 hover:border-[#E185C8]/30 transition">
-          <div class="text-[#E185C8] text-2xl mb-3">&#9889;</div>
           <h3 class="font-semibold text-lg mb-2">Impact Analysis</h3>
           <p class="text-gray-400 text-sm"><code class="text-[#C9C9EB]">pecto impact Owner</code> — know what breaks before you change it.</p>
         </div>
@@ -137,19 +131,32 @@ import Layout from '../layouts/Layout.astro';
       <p class="text-xs text-gray-600 text-center uppercase tracking-wider mb-4 mt-12">Workflow</p>
       <div class="grid md:grid-cols-3 gap-6">
         <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 hover:border-[#E185C8]/30 transition">
-          <div class="text-[#E185C8] text-2xl mb-3">&#8800;</div>
           <h3 class="font-semibold text-lg mb-2">Drift Detection</h3>
           <p class="text-gray-400 text-sm"><code class="text-[#C9C9EB]">pecto verify</code> in CI catches undocumented behavior changes. <code class="text-[#C9C9EB]">pecto diff</code> compares git refs.</p>
         </div>
         <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 hover:border-[#E185C8]/30 transition">
-          <div class="text-[#E185C8] text-2xl mb-3">&#9881;</div>
           <h3 class="font-semibold text-lg mb-2">Dashboard + Report</h3>
           <p class="text-gray-400 text-sm"><code class="text-[#C9C9EB]">pecto serve</code> for a live web dashboard. <code class="text-[#C9C9EB]">pecto report</code> for a shareable HTML file.</p>
         </div>
         <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 hover:border-[#E185C8]/30 transition">
-          <div class="text-[#E185C8] text-2xl mb-3">&#129302;</div>
           <h3 class="font-semibold text-lg mb-2">AI Context Export</h3>
           <p class="text-gray-400 text-sm"><code class="text-[#C9C9EB]">pecto context</code> — compact project summary optimized for LLM context windows.</p>
+        </div>
+      </div>
+
+      <p class="text-xs text-gray-600 text-center uppercase tracking-wider mb-4 mt-12">Automation</p>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 hover:border-[#E185C8]/30 transition">
+          <h3 class="font-semibold text-lg mb-2">Request Flow Tracing</h3>
+          <p class="text-gray-400 text-sm"><code class="text-[#C9C9EB]">pecto flow</code> — trace endpoint call chains as Mermaid sequence diagrams. Interactive trace highlighting in the dashboard.</p>
+        </div>
+        <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 hover:border-[#E185C8]/30 transition">
+          <h3 class="font-semibold text-lg mb-2">PR Behavior Bot</h3>
+          <p class="text-gray-400 text-sm"><code class="text-[#C9C9EB]">pecto pr-diff</code> — auto-post behavior diffs on PRs. See which endpoints, entities, and dependencies changed.</p>
+        </div>
+        <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 hover:border-[#E185C8]/30 transition">
+          <h3 class="font-semibold text-lg mb-2">Architecture Rules</h3>
+          <p class="text-gray-400 text-sm"><code class="text-[#C9C9EB]">pecto check</code> — validate fitness rules in CI. Catch circular deps, missing auth, and layering violations.</p>
         </div>
       </div>
     </div>
@@ -197,7 +204,6 @@ import Layout from '../layouts/Layout.astro';
         <!-- Java -->
         <div class="bg-gray-900 rounded-xl p-8 border border-gray-800">
           <div class="flex items-center gap-3 mb-6">
-            <span class="text-2xl">&#9749;</span>
             <h3 class="text-xl font-bold">Java</h3>
             <span class="ml-auto px-2 py-1 text-xs bg-green-900 text-green-300 rounded">Ready</span>
           </div>
@@ -215,7 +221,6 @@ import Layout from '../layouts/Layout.astro';
         <!-- C# -->
         <div class="bg-gray-900 rounded-xl p-8 border border-gray-800">
           <div class="flex items-center gap-3 mb-6">
-            <span class="text-2xl">&#9830;</span>
             <h3 class="text-xl font-bold">C# / .NET</h3>
             <span class="ml-auto px-2 py-1 text-xs bg-green-900 text-green-300 rounded">Ready</span>
           </div>
@@ -230,39 +235,40 @@ import Layout from '../layouts/Layout.astro';
           </ul>
         </div>
       </div>
-      <!-- Python -->
-      <div class="bg-gray-900 rounded-xl p-8 border border-gray-800 md:col-span-2 mt-8">
-        <div class="flex items-center gap-3 mb-6">
-          <span class="text-2xl">&#128013;</span>
-          <h3 class="text-xl font-bold">Python</h3>
-          <span class="ml-auto px-2 py-1 text-xs bg-green-900 text-green-300 rounded">Ready</span>
+      <div class="grid md:grid-cols-2 gap-8 mt-8">
+        <!-- Python -->
+        <div class="bg-gray-900 rounded-xl p-8 border border-gray-800">
+          <div class="flex items-center gap-3 mb-6">
+            <h3 class="text-xl font-bold">Python</h3>
+            <span class="ml-auto px-2 py-1 text-xs bg-green-900 text-green-300 rounded">Ready</span>
+          </div>
+          <ul class="space-y-2 text-sm text-gray-400">
+            <li><strong class="text-gray-300">FastAPI:</strong> <code class="text-gray-300">@router.get</code>, <code class="text-gray-300">@app.post</code>, <code class="text-gray-300">Depends()</code></li>
+            <li><strong class="text-gray-300">Flask:</strong> <code class="text-gray-300">@app.route</code>, <code class="text-gray-300">@blueprint.route</code></li>
+            <li><strong class="text-gray-300">Django REST:</strong> <code class="text-gray-300">ModelViewSet</code>, <code class="text-gray-300">@api_view</code></li>
+            <li><strong class="text-gray-300">SQLAlchemy:</strong> <code class="text-gray-300">Column()</code>, <code class="text-gray-300">mapped_column()</code></li>
+            <li><strong class="text-gray-300">SQLModel:</strong> <code class="text-gray-300">table=True</code>, inheritance resolution</li>
+            <li><strong class="text-gray-300">Django Models:</strong> <code class="text-gray-300">CharField</code>, <code class="text-gray-300">ForeignKey</code></li>
+            <li><strong class="text-gray-300">Pydantic:</strong> <code class="text-gray-300">BaseModel</code>, <code class="text-gray-300">Field()</code> constraints</li>
+            <li><strong class="text-gray-300">Celery + APScheduler:</strong> <code class="text-gray-300">@shared_task</code>, <code class="text-gray-300">add_job()</code></li>
+            <li><strong class="text-gray-300">Services:</strong> *Service classes, module-level CRUD</li>
+          </ul>
         </div>
-        <ul class="space-y-2 text-sm text-gray-400 md:columns-2">
-          <li><strong class="text-gray-300">FastAPI:</strong> <code class="text-gray-300">@router.get</code>, <code class="text-gray-300">@app.post</code>, typed params, <code class="text-gray-300">Depends()</code></li>
-          <li><strong class="text-gray-300">Flask:</strong> <code class="text-gray-300">@app.route</code>, <code class="text-gray-300">@blueprint.route</code>, methods</li>
-          <li><strong class="text-gray-300">Django REST:</strong> <code class="text-gray-300">ModelViewSet</code>, <code class="text-gray-300">@api_view</code></li>
-          <li><strong class="text-gray-300">SQLAlchemy:</strong> <code class="text-gray-300">Column()</code>, <code class="text-gray-300">relationship()</code></li>
-          <li><strong class="text-gray-300">Django Models:</strong> <code class="text-gray-300">CharField</code>, <code class="text-gray-300">ForeignKey</code></li>
-          <li><strong class="text-gray-300">Pydantic:</strong> <code class="text-gray-300">BaseModel</code>, <code class="text-gray-300">Field()</code> constraints</li>
-          <li><strong class="text-gray-300">Celery:</strong> <code class="text-gray-300">@shared_task</code>, <code class="text-gray-300">@periodic_task</code></li>
-          <li><strong class="text-gray-300">Services:</strong> *Service classes, public methods</li>
-        </ul>
-      </div>
-      <!-- TypeScript -->
-      <div class="bg-gray-900 rounded-xl p-8 border border-gray-800 md:col-span-2 mt-8">
-        <div class="flex items-center gap-3 mb-6">
-          <span class="text-2xl">&#9898;</span>
-          <h3 class="text-xl font-bold">TypeScript / JavaScript</h3>
-          <span class="ml-auto px-2 py-1 text-xs bg-green-900 text-green-300 rounded">Ready</span>
+        <!-- TypeScript -->
+        <div class="bg-gray-900 rounded-xl p-8 border border-gray-800">
+          <div class="flex items-center gap-3 mb-6">
+            <h3 class="text-xl font-bold">TypeScript / JavaScript</h3>
+            <span class="ml-auto px-2 py-1 text-xs bg-green-900 text-green-300 rounded">Ready</span>
+          </div>
+          <ul class="space-y-2 text-sm text-gray-400">
+            <li><strong class="text-gray-300">Express:</strong> <code class="text-gray-300">router.get</code>, <code class="text-gray-300">app.post</code>, <code class="text-gray-300">:param</code></li>
+            <li><strong class="text-gray-300">NestJS:</strong> <code class="text-gray-300">@Controller</code>, <code class="text-gray-300">@Get</code>/<code class="text-gray-300">@Post</code>, <code class="text-gray-300">@UseGuards</code></li>
+            <li><strong class="text-gray-300">Next.js:</strong> App Router <code class="text-gray-300">export function GET/POST</code></li>
+            <li><strong class="text-gray-300">TypeORM:</strong> <code class="text-gray-300">@Entity</code>, <code class="text-gray-300">@Column</code>, relationships</li>
+            <li><strong class="text-gray-300">Mongoose:</strong> Schema detection</li>
+            <li><strong class="text-gray-300">Services:</strong> <code class="text-gray-300">@Injectable</code>, *Service classes</li>
+          </ul>
         </div>
-        <ul class="space-y-2 text-sm text-gray-400 md:columns-2">
-          <li><strong class="text-gray-300">Express:</strong> <code class="text-gray-300">router.get</code>, <code class="text-gray-300">app.post</code>, <code class="text-gray-300">:param</code> conversion</li>
-          <li><strong class="text-gray-300">NestJS:</strong> <code class="text-gray-300">@Controller</code>, <code class="text-gray-300">@Get</code>/<code class="text-gray-300">@Post</code>, <code class="text-gray-300">@UseGuards</code></li>
-          <li><strong class="text-gray-300">Next.js:</strong> App Router <code class="text-gray-300">export function GET/POST</code></li>
-          <li><strong class="text-gray-300">TypeORM:</strong> <code class="text-gray-300">@Entity</code>, <code class="text-gray-300">@Column</code>, relationships</li>
-          <li><strong class="text-gray-300">Mongoose:</strong> Schema detection</li>
-          <li><strong class="text-gray-300">Services:</strong> <code class="text-gray-300">@Injectable</code>, *Service classes</li>
-        </ul>
       </div>
     </div>
   </section>
@@ -271,18 +277,30 @@ import Layout from '../layouts/Layout.astro';
   <section class="py-20 px-6 border-t border-gray-800">
     <div class="max-w-4xl mx-auto">
       <h2 class="font-heading text-3xl font-bold text-center mb-12">Performance</h2>
-      <div class="grid md:grid-cols-2 gap-8">
-        <div class="bg-gray-900 rounded-xl p-8 border border-gray-800 text-center">
-          <div class="text-5xl font-bold gradient-text mb-2">0.5s</div>
-          <div class="text-lg font-semibold mb-1">Spring PetClinic REST</div>
-          <div class="text-sm text-gray-500">86 files &rarr; 18 capabilities</div>
-          <div class="text-xs text-gray-600 mt-1">8 entities, 7 repos, 2 services</div>
+      <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+        <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 text-center">
+          <div class="text-4xl font-bold gradient-text mb-2">0.5s</div>
+          <div class="text-sm font-semibold mb-1">Spring PetClinic</div>
+          <div class="text-xs text-gray-500">Java &middot; 86 files</div>
+          <div class="text-xs text-gray-600 mt-1">29 caps, 8 entities</div>
         </div>
-        <div class="bg-gray-900 rounded-xl p-8 border border-gray-800 text-center">
-          <div class="text-5xl font-bold gradient-text mb-2">1.6s</div>
-          <div class="text-lg font-semibold mb-1">eShopOnWeb (.NET)</div>
-          <div class="text-sm text-gray-500">254 files &rarr; 18 capabilities</div>
-          <div class="text-xs text-gray-600 mt-1">7 entities, 14 services, 25 endpoints</div>
+        <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 text-center">
+          <div class="text-4xl font-bold gradient-text mb-2">0.5s</div>
+          <div class="text-sm font-semibold mb-1">eShopOnWeb</div>
+          <div class="text-xs text-gray-500">C# &middot; 254 files</div>
+          <div class="text-xs text-gray-600 mt-1">18 caps, 25 endpoints</div>
+        </div>
+        <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 text-center">
+          <div class="text-4xl font-bold gradient-text mb-2">0.4s</div>
+          <div class="text-sm font-semibold mb-1">FastAPI Template</div>
+          <div class="text-xs text-gray-500">Python &middot; 27 files</div>
+          <div class="text-xs text-gray-600 mt-1">8 caps, 23 endpoints</div>
+        </div>
+        <div class="bg-gray-900 rounded-xl p-6 border border-gray-800 text-center">
+          <div class="text-4xl font-bold gradient-text mb-2">0.4s</div>
+          <div class="text-sm font-semibold mb-1">NestJS TypeORM</div>
+          <div class="text-xs text-gray-500">TypeScript &middot; 7 files</div>
+          <div class="text-xs text-gray-600 mt-1">3 caps, 4 endpoints</div>
         </div>
       </div>
       <p class="text-center text-gray-500 text-sm mt-6">Parallel parsing with rayon. No network calls. Pure tree-sitter static analysis.</p>
@@ -292,7 +310,7 @@ import Layout from '../layouts/Layout.astro';
   <!-- Comparison -->
   <section class="py-20 px-6 border-t border-gray-800">
     <div class="max-w-4xl mx-auto">
-      <h2 class="font-heading text-3xl font-bold text-center mb-12">How pecto compares</h2>
+      <h2 class="font-heading text-3xl font-bold text-center mb-12">How <span class="gradient-text">pecto</span> compares</h2>
       <div class="overflow-x-auto">
         <table class="w-full text-sm">
           <thead>
@@ -307,11 +325,14 @@ import Layout from '../layouts/Layout.astro';
             <tr class="border-b border-gray-800/50"><td class="py-2 px-4">REST endpoints</td><td class="text-center text-green-400">&#10003;</td><td class="text-center text-green-400">&#10003;</td><td class="text-center text-gray-600">&#10005;</td></tr>
             <tr class="border-b border-gray-800/50"><td class="py-2 px-4">Database entities</td><td class="text-center text-green-400">&#10003;</td><td class="text-center text-gray-600">&#10005;</td><td class="text-center text-gray-600">&#10005;</td></tr>
             <tr class="border-b border-gray-800/50"><td class="py-2 px-4">Business logic / side effects</td><td class="text-center text-green-400">&#10003;</td><td class="text-center text-gray-600">&#10005;</td><td class="text-center text-gray-600">&#10005;</td></tr>
+            <tr class="border-b border-gray-800/50"><td class="py-2 px-4">Request flow tracing</td><td class="text-center text-green-400">&#10003;</td><td class="text-center text-gray-600">&#10005;</td><td class="text-center text-gray-600">&#10005;</td></tr>
             <tr class="border-b border-gray-800/50"><td class="py-2 px-4">Security rules</td><td class="text-center text-green-400">&#10003;</td><td class="text-center text-gray-600">&#10005;</td><td class="text-center text-yellow-400">~</td></tr>
+            <tr class="border-b border-gray-800/50"><td class="py-2 px-4">Architecture fitness rules</td><td class="text-center text-green-400">&#10003;</td><td class="text-center text-gray-600">&#10005;</td><td class="text-center text-green-400">&#10003;</td></tr>
             <tr class="border-b border-gray-800/50"><td class="py-2 px-4">Behavior drift detection</td><td class="text-center text-green-400">&#10003;</td><td class="text-center text-gray-600">&#10005;</td><td class="text-center text-gray-600">&#10005;</td></tr>
-            <tr class="border-b border-gray-800/50"><td class="py-2 px-4">Git-based behavior diff</td><td class="text-center text-green-400">&#10003;</td><td class="text-center text-gray-600">&#10005;</td><td class="text-center text-gray-600">&#10005;</td></tr>
+            <tr class="border-b border-gray-800/50"><td class="py-2 px-4">PR behavior diff</td><td class="text-center text-green-400">&#10003;</td><td class="text-center text-gray-600">&#10005;</td><td class="text-center text-gray-600">&#10005;</td></tr>
             <tr class="border-b border-gray-800/50"><td class="py-2 px-4">Fully offline</td><td class="text-center text-green-400">&#10003;</td><td class="text-center text-green-400">&#10003;</td><td class="text-center text-gray-600">&#10005;</td></tr>
-            <tr><td class="py-2 px-4">Speed (250 files)</td><td class="text-center text-[#E185C8]">&lt;2s</td><td class="text-center text-gray-400">N/A</td><td class="text-center text-gray-400">minutes</td></tr>
+            <tr class="border-b border-gray-800/50"><td class="py-2 px-4">Multi-language (4)</td><td class="text-center text-green-400">&#10003;</td><td class="text-center text-yellow-400">~</td><td class="text-center text-green-400">&#10003;</td></tr>
+            <tr><td class="py-2 px-4">Speed (250 files)</td><td class="text-center text-[#E185C8]">&lt;1s</td><td class="text-center text-gray-400">N/A</td><td class="text-center text-gray-400">minutes</td></tr>
           </tbody>
         </table>
       </div>
@@ -332,11 +353,16 @@ import Layout from '../layouts/Layout.astro';
       </div>
       <p class="text-gray-500 text-sm mb-6">
         Or download pre-built binaries from
-        <a href="https://github.com/pecto-dev/pecto/releases" class="text-[#E185C8] hover:underline">GitHub Releases</a>.
+        <a href="https://github.com/AliciaMartinelli/pecto/releases" class="text-[#E185C8] hover:underline">GitHub Releases</a>.
       </p>
-      <a href="https://github.com/pecto-dev/pecto" target="_blank" class="inline-block px-8 py-3 bg-[#DF0F51] hover:bg-[#E185C8] text-white font-semibold rounded-lg transition">
-        View on GitHub
-      </a>
+      <div class="flex gap-4 justify-center">
+        <a href="https://github.com/AliciaMartinelli/pecto" target="_blank" class="px-8 py-3 bg-[#DF0F51] hover:bg-[#E185C8] text-white font-semibold rounded-lg transition">
+          View on GitHub
+        </a>
+        <a href="/docs" class="px-8 py-3 bg-gray-900 border border-gray-700 hover:border-gray-500 text-gray-300 font-semibold rounded-lg transition">
+          Read the Docs
+        </a>
+      </div>
     </div>
   </section>
 
@@ -364,9 +390,9 @@ import Layout from '../layouts/Layout.astro';
         <span class="text-gray-600 text-sm">Built with Rust + tree-sitter</span>
       </div>
       <div class="flex items-center gap-6 text-sm text-gray-500">
-        <a href="https://github.com/pecto-dev/pecto" class="hover:text-white transition">GitHub</a>
-        <a href="https://github.com/pecto-dev/pecto/blob/main/LICENSE" class="hover:text-white transition">MIT License</a>
-        <a href="https://github.com/pecto-dev/pecto/blob/main/specs/FORMAT.md" class="hover:text-white transition">Spec Format</a>
+        <a href="https://github.com/AliciaMartinelli/pecto" target="_blank" class="hover:text-white transition">GitHub</a>
+        <a href="https://github.com/AliciaMartinelli/pecto/blob/main/LICENSE" target="_blank" class="hover:text-white transition">MIT License</a>
+        <a href="https://github.com/AliciaMartinelli/pecto/blob/main/specs/FORMAT.md" target="_blank" class="hover:text-white transition">Spec Format</a>
       </div>
     </div>
   </footer>

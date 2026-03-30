@@ -135,4 +135,47 @@ pecto diff HEAD~5</code></pre>
 
 <p>Serves an interactive dashboard at <code>http://localhost:4321</code> with dependency graph, domain clusters, and search. JSON API available at <code>/api/spec</code>.</p>
 
+<hr />
+
+<h2>pecto flow</h2>
+<p>Trace the request flow for an endpoint as a Mermaid sequence diagram.</p>
+<pre><code>pecto flow &lt;endpoint&gt; [path] [--format mermaid|json]</code></pre>
+
+<p>Shows the complete call chain — from controller through services, database operations, events, and back. The default output is a Mermaid sequence diagram you can paste into GitHub, Notion, or any Mermaid renderer.</p>
+<pre><code>pecto flow "POST /api/users"            # Mermaid diagram
+pecto flow "GET /users" --format json   # JSON output</code></pre>
+
+<hr />
+
+<h2>pecto check</h2>
+<p>Validate architecture fitness rules against the codebase.</p>
+<pre><code>pecto check [path] [--rules config.yaml]</code></pre>
+
+<p>Uses <code>.pecto/rules.yaml</code> if present, otherwise applies sensible defaults. Exit code 1 if any rule fails — CI-friendly.</p>
+
+<p>Built-in rules:</p>
+<ul>
+  <li><code>no-circular-dependencies</code> — no cycles in the dependency graph</li>
+  <li><code>controllers-no-direct-db-access</code> — controllers must go through services</li>
+  <li><code>all-endpoints-need-authentication</code> — every endpoint needs auth</li>
+  <li><code>no-entity-without-validation</code> — endpoints with body need validation (disabled by default)</li>
+  <li><code>max-service-dependencies: N</code> — limit service fan-out</li>
+</ul>
+
+<p>Example <code>.pecto/rules.yaml</code>:</p>
+<pre><code>rules:
+  no-circular-dependencies: true
+  controllers-no-direct-db-access: true
+  all-endpoints-need-authentication: true
+  max-service-dependencies: 5</code></pre>
+
+<hr />
+
+<h2>pecto pr-diff</h2>
+<p>Generate a GitHub-flavored Markdown behavior diff between two git refs.</p>
+<pre><code>pecto pr-diff &lt;base-ref&gt; [head-ref] [--path dir]</code></pre>
+
+<p>Shows new, modified, and removed endpoints, entities, dependencies, and flow changes. Designed for PR comments — use with the <code>pecto-pr</code> GitHub Action to auto-post on every pull request.</p>
+<pre><code>pecto pr-diff main HEAD</code></pre>
+
 </DocsLayout>

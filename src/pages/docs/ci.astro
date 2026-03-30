@@ -32,7 +32,7 @@ jobs:
         run: pecto verify specs.yaml</code></pre>
 
 <h3>Using the pecto action</h3>
-<pre><code>- uses: pecto-dev/pecto/.github/actions/pecto@main
+<pre><code>- uses: AliciaMartinelli/pecto/.github/actions/pecto@main
   with:
     spec-file: specs.yaml
     path: .
@@ -61,11 +61,47 @@ jobs:
   <li>If unintentional, fix the code</li>
 </ol>
 
-<h2>Comparing PRs</h2>
-<p>Use <code>pecto diff</code> in PR reviews to see behavior changes:</p>
+<h2>PR Behavior Comments</h2>
+<p>Auto-post a behavior diff as a comment on every pull request. Shows new, modified, and removed endpoints, entities, and dependencies.</p>
 
-<pre><code>- name: Show behavior changes
-  run: pecto diff origin/main HEAD</code></pre>
+<pre><code># .github/workflows/pecto-pr.yml
+name: Behavior Diff
+on: pull_request
+
+jobs:
+  diff:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+      - uses: AliciaMartinelli/pecto/.github/actions/pecto-pr@main
+        with:
+          github-token: $&#123;&#123; secrets.GITHUB_TOKEN &#125;&#125;</code></pre>
+
+<p>The action automatically finds and updates its previous comment (no duplicates). The <code>&lt;!-- pecto --&gt;</code> marker in the comment is used for identification.</p>
+
+<h2>Architecture Rules in CI</h2>
+<p><code>pecto check</code> validates architecture fitness rules. Exit code 1 if any rule fails.</p>
+
+<pre><code>- name: Check architecture rules
+  run: pecto check --rules .pecto/rules.yaml</code></pre>
+
+<p>Configure rules in <code>.pecto/rules.yaml</code>:</p>
+<pre><code>rules:
+  no-circular-dependencies: true
+  controllers-no-direct-db-access: true
+  all-endpoints-need-authentication: true
+  max-service-dependencies: 5</code></pre>
+
+<h2>Comparing PRs</h2>
+<p>Use <code>pecto diff</code> or <code>pecto pr-diff</code> in PR reviews to see behavior changes:</p>
+
+<pre><code>- name: Show behavior changes (raw)
+  run: pecto diff origin/main HEAD
+
+- name: Show behavior changes (markdown)
+  run: pecto pr-diff origin/main HEAD</code></pre>
 
 <h2>Tips</h2>
 <ul>
