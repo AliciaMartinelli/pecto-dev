@@ -1,0 +1,84 @@
+# pecto
+
+> Open-source CLI that extracts behavior specs from Java, C#, Python, and TypeScript codebases using static analysis. Built in Rust with tree-sitter. No LLMs, no cloud, fully offline.
+
+Website: https://pecto.dev
+GitHub: https://github.com/AliciaMartinelli/pecto
+Install: cargo install pecto
+
+## What pecto does
+
+pecto analyzes source code and extracts structured behavior specifications:
+- REST endpoints (HTTP method, path, parameters, validation, error responses, security)
+- Database entities (tables, fields, types, constraints, relationships, field inheritance)
+- Services (operations, transactions, side effects)
+- Scheduled tasks (cron jobs, background services)
+- Dependencies between capabilities (controller → service → repository)
+- Business domains (auto-clustered capability groups)
+- Request flows (traced call chains as Mermaid sequence diagrams)
+
+## Supported languages and frameworks
+
+Java: Spring Boot (@RestController, @GetMapping), Jakarta EE (@Path, @GET), JPA (@Entity, @Table), Spring Data (JpaRepository), @Service, @Scheduled, @EventListener, Bean Validation (@NotBlank, @Email, @Size), Security (@PreAuthorize, @RolesAllowed)
+
+C#/.NET: ASP.NET Core ([ApiController], [HttpGet], [Route]), Entity Framework Core (DbSet<T>, [Table], [Key]), Data Annotations ([Required], [EmailAddress]), Services, [Authorize], BackgroundService, IHostedService
+
+Python: FastAPI (@router.get, @app.post, Depends()), Flask (@app.route, @blueprint.route), Django REST Framework (ModelViewSet, @api_view), SQLAlchemy (Column(), mapped_column(), relationship()), SQLModel (table=True, Field(), inheritance), Django Models, Pydantic (BaseModel, Field()), Celery (@shared_task), APScheduler (scheduler.add_job())
+
+TypeScript/JavaScript: NestJS (@Controller, @Get/@Post, @UseGuards, @Injectable), Express (router.get, app.post), Next.js App Router (export function GET/POST), TypeORM (@Entity, @Column), Mongoose schemas
+
+## CLI commands
+
+pecto init [path] — Analyze project, output YAML/JSON spec. Flags: --format yaml|json, --output file, --verbose, --quiet, --language auto|java|csharp|python|typescript
+
+pecto serve [path] — Interactive web dashboard at localhost:4321 with D3.js dependency graph, flow trace highlighting, domain filtering, search
+
+pecto show <name> — Inspect a single capability
+
+pecto verify <spec-file> — Compare stored spec against current code, exit code 1 if drifted (CI-friendly)
+
+pecto diff <base> [head] — YAML diff between two git refs
+
+pecto pr-diff <base> [head] — GitHub-flavored Markdown behavior diff for PR comments
+
+pecto check [path] — Validate architecture fitness rules. Built-in rules: no-circular-dependencies, controllers-no-direct-db-access, all-endpoints-need-authentication, no-entity-without-validation, max-service-dependencies. Config: .pecto/rules.yaml. Exit code 1 on failure.
+
+pecto flow <endpoint> — Request flow as Mermaid sequence diagram or JSON
+
+pecto domains [path] — Business domain clusters
+
+pecto graph [path] — Dependency graph as text, DOT, or JSON
+
+pecto impact <name> — Reverse BFS: what breaks if you change this capability
+
+pecto context [path] — Compact LLM-optimized project summary (~4K tokens)
+
+pecto report [path] — Self-contained HTML report with interactive D3.js graph
+
+## Architecture
+
+Rust workspace with 6 crates:
+- pecto-core: data model (ProjectSpec, Capability, Endpoint, Entity, etc.), serialization, domain clustering, inheritance resolution, rules engine, pr-diff, mermaid generation
+- pecto-java: tree-sitter-java based extractors (controller, entity, repository, service, scheduled, dependencies, flow)
+- pecto-csharp: tree-sitter-c-sharp based extractors
+- pecto-python: tree-sitter-python based extractors
+- pecto-typescript: tree-sitter-typescript based extractors
+- pecto-cli: clap CLI, axum web server, D3.js dashboard, HTML report
+
+Language auto-detection via project files (pom.xml → Java, .csproj → C#, pyproject.toml → Python, package.json → TypeScript). Parallel file parsing with rayon. Entity field inheritance resolution across same-file class hierarchies.
+
+## GitHub Actions
+
+pecto verify action: .github/actions/pecto — installs pecto, runs pecto verify against a spec file
+pecto pr-diff action: .github/actions/pecto-pr — posts behavior diff as PR comment, updates existing comment via <!-- pecto --> marker
+
+## Performance
+
+Spring PetClinic (Java, 86 files): ~0.5s
+eShopOnWeb (C#, 254 files): ~0.5s
+FastAPI Template (Python, 27 files): ~0.4s
+NestJS TypeORM (TypeScript, 7 files): ~0.4s
+
+## License
+
+MIT
