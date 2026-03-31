@@ -7,12 +7,21 @@ import Layout from '../layouts/Layout.astro';
   <nav class="fixed top-0 w-full z-50 bg-gray-950/80 backdrop-blur-sm border-b border-gray-800">
     <div class="max-w-6xl mx-auto px-6 h-16 flex items-center justify-between">
       <a href="/" class="text-xl font-bold gradient-text font-mono">pecto</a>
-      <div class="flex items-center gap-6">
+      <div class="hidden md:flex items-center gap-6">
         <a href="#features" class="text-sm text-gray-400 hover:text-white transition">Features</a>
         <a href="#languages" class="text-sm text-gray-400 hover:text-white transition">Languages</a>
         <a href="/docs" class="text-sm text-gray-400 hover:text-white transition">Docs</a>
         <a href="https://github.com/AliciaMartinelli/pecto" target="_blank" class="text-sm text-gray-400 hover:text-white transition">GitHub</a>
       </div>
+      <button id="mobile-menu-btn" class="md:hidden text-gray-400 hover:text-white" onclick="document.getElementById('mobile-menu').classList.toggle('hidden')">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M3 12h18M3 6h18M3 18h18"/></svg>
+      </button>
+    </div>
+    <div id="mobile-menu" class="hidden md:hidden border-t border-gray-800 bg-gray-950/95 backdrop-blur-sm px-6 py-4 flex flex-col gap-4">
+      <a href="#features" class="text-sm text-gray-400 hover:text-white transition" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Features</a>
+      <a href="#languages" class="text-sm text-gray-400 hover:text-white transition" onclick="document.getElementById('mobile-menu').classList.add('hidden')">Languages</a>
+      <a href="/docs" class="text-sm text-gray-400 hover:text-white transition">Docs</a>
+      <a href="https://github.com/AliciaMartinelli/pecto" target="_blank" class="text-sm text-gray-400 hover:text-white transition">GitHub</a>
     </div>
   </nav>
 
